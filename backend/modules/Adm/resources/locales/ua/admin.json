@@ -1,0 +1,65 @@
+{
+  "home": "Головна",
+  "cancel": "Відмінити",
+  "save": "Зберегти",
+  "preview": "Передогляд",
+  "general": "Загальне",
+  "common": "Звичайне",
+  "name": "Ім'я",
+  "create": "Створити",
+  "edit": "Редагувати",
+  "info": "Детальніше",
+  "confirm": "Підтвердити",
+  "remove": "Вилучити",
+  "system_removal": "Вилучення системи (?)",
+  "restore": "Відновити",
+  "duplicate": "Клонувати",
+  "select": "Вибрати",
+  "search": "Шукати",
+
+  "managers": "Менеджери",
+  "dashboard": "Головна панель",
+  "users": "Користувачі",
+  "roles": "Ролі",
+  "settings": "Налаштування",
+  "ui": "UI",
+  "development": "Розробка",
+
+  "users_list": "Список користувачів",
+  "roles_list": "Список ролей",
+  "experimental": "Експериментально",
+
+  "save_settings": "Зберегти налаштування",
+
+  "create_new_user": "Створити нового користувача",
+  "edit_user": "Редагувати користувача",
+  "blocked": "Заблоковано",
+  "account": "Акаунт",
+  "security": "Безпека",
+  "password": "Пароль",
+  "confirm_password": "Підтвердження паролю",
+  "permissions": "Дозволи",
+  "login": "Вхід",
+  "email": "Електронна пошта",
+  "first_name": "Ім'я",
+  "last_name": "Призвіще",
+  "actions": "Дії",
+
+  "create_new_role": "Створити роль",
+  "edit_role" : "Редагувати роль",
+
+  "role": "Роль",
+
+  "slug": "Слаг",
+  "description": "Опис",
+
+  "signout": "Вийти",
+
+  "datatables_info": "Показую сторінку _PAGE_ з _PAGES_",
+  "datatables_search": "Пошук",
+  "datatables_show": "Показ _MENU_ записів",
+
+  "shop": "Магазин",
+  "category": "Категорія",
+  "tags": "Теги"
+}

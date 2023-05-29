@@ -1,0 +1,17 @@
+<ol class="breadcrumb text-muted fs-5 fw-semibold" style="background:transparent">
+    @each(breadcrumb in breadcrumbs)
+    @if($loop.first)
+      <li class="breadcrumb-item">
+        <a href="{{breadcrumb.url}}" class=""><i class="flaticon2-shelter text-primary"></i></a>
+      </li>
+    @elseif($loop.last)
+      <li class="breadcrumb-item text-muted">
+        {{ breadcrumb.name }}
+      </li>
+    @else
+      <li class="breadcrumb-item">
+        <a href="{{ breadcrumb.url }}" class="">{{ breadcrumb.name }}</a>
+      </li>
+    @endif
+    @endeach
+  </ol>

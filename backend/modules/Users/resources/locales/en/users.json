@@ -1,0 +1,15 @@
+{
+  "edit": "Edit user",
+  "create": "Create user",
+  "users": "Users",
+  "user": "user",
+  "list": "Users list",
+
+  "username": "Username",
+  "email": "E-mail",
+  "password": "Password",
+  "confirm_password": "Confirm password",
+  "blocked": "Ban",
+  "created_at": "Created at",
+  "updated_at": "Updated at"
+}

@@ -1,0 +1,14 @@
+{
+  "edit": "Edit report",
+  "create": "Create report",
+  "reports": "Reports",
+  "report": "report",
+  "list": "Reports list",
+
+  "user_id": "Complainant",
+  "description": "Description",
+  "no_description": "No description",
+  "solved": "Solved",
+  "created_at": "Created at",
+  "updated_at": "Updated at"
+}

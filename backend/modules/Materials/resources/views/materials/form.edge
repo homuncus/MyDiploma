@@ -1,0 +1,47 @@
+<form action="{{ route('Materials.materials.save') }}" method="POST" data-callback="materials::AfterFormSend" data-module="materialsForm">
+  @if(data.id)
+  <input type="hidden" name="id" value="{{ data.id }}">
+  @endif
+
+ 
+         <div class="form-group row">
+           <label class="col-form-label col-lg-3 col-sm-12">{{__('Materials.materials.workshop_id')}}</label>
+           <div class="col-lg-9 col-md-9 col-sm-12">
+             <select class="form-control form-control-solid" id="workshop_id" name="workshop_id">
+               @each(option in [{title:'one', value: 1}, {title:'two', value: 2}, {title:'three', value: 3}])
+                 <option value="{{ option.value }}" {{option.value == 2 ? 'selected' : ''}}>{{option.title}}</option>
+               @endeach
+             </select>
+           </div>
+         </div>
+ 
+         <div class="form-group row">
+           <label class="col-xl-3 col-lg-3 col-form-label">{{__('Materials.materials.name')}}</label>
+           <div class="col-lg-9 col-xl-9">
+             <input class="form-control form-control-solid" name="name" type="text" value="{{ data.name || '' }}">
+           </div>
+         </div>
+ 
+         <div class="form-group row">
+           <label class="col-xl-3 col-lg-3 col-form-label">{{__('Materials.materials.description')}}</label>
+           <div class="col-lg-9 col-xl-9">
+               <textarea class="form-control textarea form-control-solid" name="description">{{ data.description || '' }}</textarea>
+           </div>
+         </div>
+ 
+ 
+         <div class="form-group row">
+           <label class="col-xl-3 col-lg-3 col-form-label">{{__('Materials.materials.quantity')}}</label>
+           <div class="col-lg-9 col-xl-9">
+             <input class="form-control form-control-solid" name="quantity" type="text" value="{{ data.quantity || '' }}">
+           </div>
+         </div>
+ 
+         <div class="form-group row">
+           <label class="col-xl-3 col-lg-3 col-form-label">{{__('Materials.materials.ppu')}}</label>
+           <div class="col-lg-9 col-xl-9">
+             <input class="form-control form-control-solid" name="ppu" type="text" value="{{ data.ppu || '' }}">
+           </div>
+         </div>
+   
+</form>

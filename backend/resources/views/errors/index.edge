@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <base href="/admin/" />
+        <meta charset="utf-8" />
+        <title>{{code || ''}} | {{status || ''}}</title>
+        <meta name="description" content="{{code || ''}} {{status || ''}}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+        <link href="assets/css/style.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
+        <link href="assets/media/logos/favicon.ico" rel="shortcut icon" />
+    </head>
+    <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+        <div class="d-flex flex-column flex-root">
+            <div class="d-flex flex-row-fluid flex-column bgi-size-cover bgi-position-center bgi-no-repeat p-10 p-sm-30" style="background-image: url(assets/media/error/bg1.jpg);">
+                <h1 class="font-weight-boldest text-dark-75 mt-15" style="font-size: 10rem;">{{status}}</h1>
+                <p class="font-size-h3 text-muted font-weight-normal">{{message || 'OOPS! Something went wrong here'}}</p>
+            </div>
+        </div>
+    </body>
+</html>

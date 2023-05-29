@@ -1,0 +1,14 @@
+<form action="{{ route('Users.roles.save') }}" method="POST" data-callback="roles::AfterFormSend" data-module="rolesForm">
+  @if(data.id)
+  <input type="hidden" name="id" value="{{ data.id }}">
+  @endif
+
+ 
+         <div class="form-group row">
+           <label class="col-xl-3 col-lg-3 col-form-label">{{__('Users.roles.name')}}</label>
+           <div class="col-lg-9 col-xl-9">
+             <input class="form-control form-control-solid" name="name" type="text" value="{{ data.name || '' }}">
+           </div>
+         </div>
+   
+</form>

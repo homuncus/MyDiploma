@@ -1,0 +1,65 @@
+{
+  "home": "Home",
+  "cancel": "Cancel",
+  "save": "Save",
+  "preview": "Preview",
+  "general": "General",
+  "common": "Common",
+  "name": "Name",
+  "create": "Create",
+  "edit": "Edit",
+  "info": "Info",
+  "confirm": "Confirm",
+  "remove": "Remove",
+  "system_removal": "System removal",
+  "restore": "Restore",
+  "duplicate": "Duplicate",
+  "select": "Select",
+  "search": "Search",
+
+  "managers": "Managers",
+  "dashboard": "Dashboard",
+  "users": "Users",
+  "roles": "Roles",
+  "settings": "Settings",
+  "ui": "UI",
+  "development": "Development",
+
+  "users_list": "Users list",
+  "roles_list": "Roles list",
+  "experimental": "Experimental",
+
+  "save_settings": "Save settings",
+
+  "create_new_user": "Create new user",
+  "edit_user": "Edit user",
+  "blocked": "Blocked",
+  "account": "Account",
+  "security": "Security",
+  "password": "Password",
+  "confirm_password": "Confirm password",
+  "permissions": "Permissions",
+  "login": "Login",
+  "email": "Email",
+  "first_name": "First name",
+  "last_name": "Last name",
+  "actions": "Actions",
+
+  "create_new_role": "Create role",
+  "edit_role" : "Edit role",
+
+  "role": "Role",
+
+  "slug": "Slug",
+  "description": "Description",
+
+  "signout": "Sign out",
+
+  "datatables_info": "Showing page _PAGE_ of _PAGES_",
+  "datatables_search": "Search",
+  "datatables_show": "Show _MENU_ entries",
+
+  "shop": "Shop",
+  "category": "Category",
+  "tags": "Tags"
+}

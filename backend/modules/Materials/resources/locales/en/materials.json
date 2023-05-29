@@ -1,0 +1,15 @@
+{
+  "edit": "Edit material",
+  "create": "Create material",
+  "materials": "Materials",
+  "material": "material",
+  "list": "Materials list",
+
+  "workshop_id": "Workshop",
+  "name": "Name",
+  "description": "Description",
+  "quantity": "Quantity",
+  "ppu": "Price per Unit",
+  "created_at": "Created at",
+  "updated_at": "Updated at"
+}

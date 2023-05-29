@@ -1,0 +1,8 @@
+<form action="{{ route('Users.userConnections.save') }}" method="POST" data-callback="userConnections::AfterFormSend" data-module="userConnectionsForm">
+  @if(data.id)
+  <input type="hidden" name="id" value="{{ data.id }}">
+  @endif
+
+ 
+   
+</form>

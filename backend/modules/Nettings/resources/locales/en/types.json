@@ -1,0 +1,12 @@
+{
+  "edit": "Edit netting type",
+  "create": "Create netting type",
+  "types": "Netting types",
+  "type": "netting type",
+  "list": "Netting types list",
+
+  "name": "Name",
+  "description": "Description",
+  "created_at": "Created at",
+  "updated_at": "Updated at"
+}

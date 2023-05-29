@@ -1,0 +1,11 @@
+{
+  "edit": "Edit role",
+  "create": "Create role",
+  "roles": "Roles",
+  "role": "role",
+  "list": "Roles list",
+
+  "name": "Name",
+  "created_at": "Created at",
+  "updated_at": "Updated at"
+}

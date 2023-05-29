@@ -1,0 +1,37 @@
+<div class="modal fade">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title"><i class="icon-paragraph-justify2"></i> <span class="modal-title"></span></h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-cancel btn btn-warning" data-dismiss="modal">Отменить</button>
+                <button type="submit" class="modal-submit btn btn-primary" onclick="$(this).closest('.modal-content').find('form').submit();">Сохранить</button>
+                <button type="submit" class="modal-edit btn btn-primary" onclick="$(this).closest('.modal-content').find('form').submit();">Редактировать</button>
+                <span class="modal-buttons"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><i class="icon-paragraph-justify2"></i> <span class="modal-title"></span></h4>
+            </div>
+            <div class="modal-text"></div>
+            <div class="modal-footer">
+                <button type="button" class="modal-cancel btn btn-warning" data-dismiss="modal">Отменить</button>
+                <button type="submit" class="modal-submit btn btn-primary" onclick="$(this).closest('.modal-content').find('form').submit();">Сохранить</button>
+                 <button type="submit" class="modal-edit btn btn-primary" onclick="$(this).closest('.modal-content').find('form').submit();">Редактировать</button>
+                <span class="modal-buttons"></span>
+            </div>
+        </div>
+    </div>
+</div>

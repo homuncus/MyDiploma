@@ -1,0 +1,14 @@
+{
+  "errors": {
+    "blocked": "Blocked",
+    "roleNotPassed": "Role not passed"
+  },
+  "login": "Login",
+  "siginIn": "Sign in",
+  "siginInOut": "Sign out",
+  "siginInInfo": "Enter your email and password",
+  "email": "Email",
+  "password": "Password",
+  "userBlocked": "User blocked",
+  "userRolesNotPassed": "User roles not passed"
+}

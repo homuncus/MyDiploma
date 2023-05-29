@@ -1,0 +1,15 @@
+{
+  "edit": "Edit production",
+  "create": "Create production",
+  "productions": "Productions",
+  "production": "production",
+  "list": "Productions list",
+
+  "workshop_id": "Workshop",
+  "netting_id": "Netting",
+  "material_id": "Material",
+  "user_id": "Responsible user",
+  "completed": "Completed",
+  "created_at": "Created at",
+  "updated_at": "Updated at"
+}

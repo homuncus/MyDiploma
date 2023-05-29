@@ -1,0 +1,20 @@
+{
+  "edit": "Edit user",
+  "create": "Create user",
+  "user": "User",
+  "users": "Users",
+  "list": "User list",
+  "id": "Id",
+  "login": "Login",
+  "email": "Email",
+  "last_name" : "Last name",
+  "first_name": "First name",
+  "password": "Password",
+  "blocked": "Blocked",
+  "data": "Data",
+  "deleted_at": "Deleted_at",
+  "created_at": "Created at",
+  "updated_at": "Updated at",
+  "repassword": "Re password",
+  "avatar": "Avatar"
+}

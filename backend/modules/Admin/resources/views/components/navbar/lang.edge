@@ -1,0 +1,19 @@
+<div class="dropdown">
+  <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
+      <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
+          <img class="h-20px w-20px rounded-sm" src="{{lang.flag}}" alt="{{lang.shortTitle}}" />
+      </div>
+  </div>
+  <div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right">
+      <ul class="navi navi-hover py-4">
+          @each(locale in locales)
+          <li class="navi-item">
+              <a href="{{route('admin.dashboard.lang',{lang:locale.slug})}}" class="no-ajax navi-link">
+                  <span class="symbol symbol-20 mr-3"><img src="{{locale.flag}}" alt="{{lang.shortTitle}}" /></span>
+                  <span class="navi-text">{{locale.title}}</span>
+              </a>
+          </li>
+          @endeach
+      </ul>
+  </div>
+</div>

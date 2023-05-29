@@ -1,0 +1,32 @@
+<form action="{{ route('Nettings.nettings.save') }}" method="POST" data-callback="nettings::AfterFormSend" data-module="nettingsForm">
+  @if(data.id)
+  <input type="hidden" name="id" value="{{ data.id }}">
+  @endif
+
+ 
+         <div class="form-group row">
+           <label class="col-form-label col-lg-3 col-sm-12">{{__('Nettings.nettings.type_id')}}</label>
+           <div class="col-lg-9 col-md-9 col-sm-12">
+             <select class="form-control form-control-solid" id="type_id" name="type_id">
+               @each(type in types)
+                 <option value="{{ type.id }}" {{data.type_id == type.id ? 'selected' : ''}}>{{type.name}}</option>
+               @endeach
+             </select>
+           </div>
+         </div>
+ 
+         <div class="form-group row">
+           <label class="col-xl-3 col-lg-3 col-form-label">{{__('Nettings.nettings.size')}}</label>
+           <div class="col-lg-9 col-xl-9">
+             <input class="form-control form-control-solid" name="size" type="text" value="{{ data.size || '' }}">
+           </div>
+         </div>
+ 
+         <div class="form-group row">
+           <label class="col-xl-3 col-lg-3 col-form-label">{{__('Nettings.nettings.color')}}</label>
+           <div class="col-lg-9 col-xl-9">
+             <input class="form-control form-control-solid" name="color" type="text" value="{{ data.color || '' }}">
+           </div>
+         </div>
+   
+</form>

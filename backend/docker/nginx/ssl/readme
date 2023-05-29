@@ -1,0 +1,6 @@
+put on this folder:
+briz-ssl.chained.crt
+briz-ssl.key
+
+If you have not briz-ssl.chained.crt but have briz-ssl.crt and briz-ssl.bundle.crt you can create briz-ssl.chained.crt by the command below:
+$ cat briz-ssl.crt briz-ssl.bundle.crt > briz-ssl.chained.crt

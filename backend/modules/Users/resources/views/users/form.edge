@@ -1,0 +1,47 @@
+<form action="{{ route('Users.users.save') }}" method="POST" data-callback="users::AfterFormSend" data-module="usersForm">
+  @if(data.id)
+  <input type="hidden" name="id" value="{{ data.id }}">
+  @endif
+
+ 
+         <div class="form-group row">
+           <label class="col-xl-3 col-lg-3 col-form-label">{{__('Users.users.username')}}</label>
+           <div class="col-lg-9 col-xl-9">
+             <input class="form-control form-control-solid" name="username" type="text" value="{{ data.username || '' }}">
+           </div>
+         </div>
+ 
+         <div class="form-group row">
+           <label class="col-xl-3 col-lg-3 col-form-label">{{__('Users.users.email')}}</label>
+           <div class="col-lg-9 col-xl-9">
+             <input class="form-control form-control-solid" name="email" type="text" value="{{ data.email || '' }}">
+           </div>
+         </div>
+
+         <div class="form-group row">
+          <label class="col-xl-3 col-lg-3 col-form-label">{{__('Users.users.password')}}</label>
+          <div class="col-lg-9 col-xl-9">
+            <input class="form-control form-control-solid" name="password" type="password" value="{{ '' }}">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-xl-3 col-lg-3 col-form-label">{{__('Users.users.confirm_password')}}</label>
+          <div class="col-lg-9 col-xl-9">
+            <input class="form-control form-control-solid" name="confirmPassword" type="password" value="{{ '' }}">
+          </div>
+        </div>
+ 
+         <div class="form-group form-group-sm row">
+           <label class="col-xl-3 col-lg-3 col-form-label">{{__('Users.users.blocked')}}</label>
+           <div class="col-lg-9 col-xl-9">
+             <span class="switch">
+               <label>
+                 <input type="checkbox" {{ data.blocked ? 'checked' : ''}} name="blocked" value="1">
+                 <span></span>
+               </label>
+             </span>
+           </div>
+         </div>
+   
+</form>

@@ -1,0 +1,19 @@
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+  <div class="kt-container  kt-container--fluid ">
+    <div class="kt-subheader__main">
+      <ol class="breadcrumb text-muted fs-6 fw-semibold">
+          @each(breadcrumb in breadcrumbs)
+          @if($loop.first)
+            <li class="breadcrumb-item"><a href="#" class="fs-5"><i class="flaticon2-shelter"></i></a></li>
+          @elseif($loop.last)
+            <li class="breadcrumb-item"><a href="" class="fs-5">{{ breadcrumb['name'] }}</a></li>
+          @else
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a href="{{ breadcrumb['url'] }}" class="kt-subheader__breadcrumbs-link">{{ breadcrumb['name'] }}</a>
+          @endif
+          @endeach
+        <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+      </ol>
+    </div>
+  </div>
+</div>

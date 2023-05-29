@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="MobileOptimized" content="1280"/>
+    <meta name="HandheldFriendly" content="false"/>
+    <meta name="format-detection" content="telephone=no">
+
+
+    <link rel="stylesheet" href="styles/plagins.css">
+
+    <link rel="stylesheet" href="styles/main.css">
+
+</head>
+<body>
+
+<div class="global-wrapper">
+  <!-- HEADER -->
+  <header class="main-header">
+      <div class="alter-container">
+          <div class="menu-wrap">
+              <a href="#" class="logo">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                      <g>
+                          <g>
+                              <path fill="#fff"
+                                    d="M6.031 14.574a15.08 15.08 0 0 1 7.302-7.907v8H6zm20.38 18.505a14.483 14.483 0 0 1-8.658 1.353 14.474 14.474 0 0 1-7.8-3.858 14.514 14.514 0 0 1-4.541-10.099h8.192V30.63h5.498V0c-.827.081-1.647.143-2.466.28a19.757 19.757 0 0 0-6.682 2.402A20.237 20.237 0 0 0 0 19.154v1.793c.03.698.098 1.394.205 2.084a20.12 20.12 0 0 0 9.749 14.256A19.763 19.763 0 0 0 19.96 40h.202a19.751 19.751 0 0 0 9.886-2.713 20.116 20.116 0 0 0 9.749-14.253c.106-.692.173-1.388.202-2.087v-1.793a20.226 20.226 0 0 0-9.95-16.47A19.704 19.704 0 0 0 23.366.282C22.545.146 21.725.084 20.897 0v30.63h5.513V6.907h.014c.21.106.418.218.62.333a14.587 14.587 0 0 1 7.55 12.764 14.612 14.612 0 0 1-8.192 13.098z"/>
+                          </g>
+                      </g>
+                  </svg>
+              </a>
+              <strong>Меню</strong>
+              <div class="menu-wrap__btn-burger btn-burger">
+                  <div class="btn-burger__wrap">
+                      <div class="btn-burger__line btn-burger__line-top"></div>
+                      <div class="btn-burger__line btn-burger__line-middle"></div>
+                      <div class="btn-burger__line btn-burger__line-bottom"></div>
+                  </div>
+              </div>
+              <button type="button" class="menu-wrap__search btn-square btn-square_bg-col-astr">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+                      <g>
+                          <g>
+                              <path fill="#fff"
+                                    d="M9.232 15.623A6.383 6.383 0 0 1 2.84 9.232 6.383 6.383 0 0 1 9.23 2.84a6.383 6.383 0 0 1 6.392 6.39 6.383 6.383 0 0 1-6.391 6.392zm8.521 0h-1.122l-.397-.383a9.19 9.19 0 0 0 2.23-6.008A9.231 9.231 0 0 0 9.232 0 9.231 9.231 0 0 0 0 9.232a9.231 9.231 0 0 0 9.232 9.232 9.19 9.19 0 0 0 6.008-2.23l.383.397v1.122L19.883 22 22 19.884z"/>
+                          </g>
+                      </g>
+                  </svg>
+              </button>
+              <nav class="nav-wrap">
+                  <button></button>
+                  <ul>
+                      <li><a href="#">Головна</a></li>
+                      <li><a href="#">Компанія</a></li>
+                      <li><a href="#">Новини</a></li>
+                      <li><a href="#">Зворотній зв"язок</a></li>
+                      <li><a href="#">Вакансії</a></li>
+                      <li><a href="#">Баланс/Заборгованість</a></li>
+                      <li><a href="#">Акції</a></li>
+                  </ul>
+              </nav>
+          </div>
+          <form class="search">
+              <div class="btn-square btn-square_bg-col-white search__btn-history-s">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="19" viewBox="0 0 22 19">
+                      <g>
+                          <g>
+                              <path fill="#0a2352"
+                                    d="M11.524 5.278v5.278l4.452 2.66.807-1.352-3.688-2.206v-4.38zM12.57 0C7.365 0 3.143 4.254 3.143 9.5H0l4.075 4.106.074.148L8.38 9.5H5.238c0-4.085 3.28-7.389 7.333-7.389 4.055 0 7.334 3.304 7.334 7.389 0 4.085-3.28 7.389-7.334 7.389a7.247 7.247 0 0 1-5.175-2.175l-1.487 1.5A9.346 9.346 0 0 0 12.57 19C17.778 19 22 14.746 22 9.5S17.778 0 12.571 0z"/>
+                          </g>
+                      </g>
+                  </svg>
+              </div>
+              <div class="search__wrap">
+                  <div class="search__input-w">
+                      <input type="search" placeholder="Пошук">
+                  </div>
+                  <div class="select-wrap">
+                      <span class="select-wrap__val">По назві</span>
+                      <ul class="select-wrap__list">
+                          <li>По назві</li>
+                          <li>По коду</li>
+                      </ul>
+                  </div>
+                  <button class="btn-square btn-square_bg-col-astr">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+                          <g>
+                              <g>
+                                  <path fill="#fff"
+                                        d="M9.232 15.623A6.383 6.383 0 0 1 2.84 9.232 6.383 6.383 0 0 1 9.23 2.84a6.383 6.383 0 0 1 6.392 6.39 6.383 6.383 0 0 1-6.391 6.392zm8.521 0h-1.122l-.397-.383a9.19 9.19 0 0 0 2.23-6.008A9.231 9.231 0 0 0 9.232 0 9.231 9.231 0 0 0 0 9.232a9.231 9.231 0 0 0 9.232 9.232 9.19 9.19 0 0 0 6.008-2.23l.383.397v1.122L19.883 22 22 19.884z"/>
+                              </g>
+                          </g>
+                      </svg>
+                  </button>
+              </div>
+          </form>
+          <div class="inf-client">
+              <div class="inf-client__arrears-wrap">
+                  <div class="arrears inf-client__item">
+                      <span class="arrears__text-h">Заборгованість</span>
+                      <p class="arrears__text">Ваша заборгованість становить</p>
+                      <div class="arrears__wrap">
+                          <span class="arrears__sum">90 270.00</span> <span class="currency">грн</span>
+                      </div>
+                  </div>
+                  <div class="overdue inf-client__item">
+                      <span class="overdue__text-h">Просрочено</span>
+                      <p class="overdue__text">
+                          Просрочено станом на <span class="overdue__date">25.08.2021</span>
+                      </p>
+                      <div class="overdue__wrap">
+                          <span class="overdue__sum">800 00</span> <span class="currency">грн</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="user inf-client__item">
+                  <a href="#" class="user__basket btn-square">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+                          <g>
+                              <g>
+                                  <path fill="#fff"
+                                        d="M17.588 17.6c-1.206 0-2.183.99-2.183 2.2 0 1.21.977 2.2 2.184 2.2 1.206 0 2.194-.99 2.194-2.2 0-1.21-.988-2.2-2.195-2.2zm-10.99 0c-1.21 0-2.189.99-2.189 2.2 0 1.21.979 2.2 2.189 2.2s2.199-.99 2.199-2.2c0-1.21-.99-2.2-2.2-2.2zM5.674 4.4h13.36l-3.035 5.5H8.28zm10.325 7.7c.825 0 1.55-.451 1.924-1.133l3.937-7.139a1.096 1.096 0 0 0-.957-1.628H4.63L3.596 0H0v2.2h2.2l3.958 8.349-1.485 2.684c-.802 1.474.253 3.267 1.925 3.267h13.195v-2.2H6.598l1.21-2.2z"/>
+                              </g>
+                          </g>
+                      </svg>
+                      <span class="count">2</span>
+                  </a>
+                  <div class="user__profile btn-square">
+                      <?xml version="1.0" encoding="utf-8"?>
+                      <svg version="1.1" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                           x="0px" y="0px"
+                           viewBox="0 0 20 20" style="enable-background:new 0 0 20 20;" xml:space="preserve">
+                          <style type="text/css">
+                              .st0 {
+                                  fill: #FFFFFF;
+                              }
+                          </style>
+                          <path class="st0" d="M10,2.5c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S8.3,2.5,10,2.5 M10,13.5c3.4,0,7,1.8,7,2.6v1.4H3
+                              v-1.4C3,15.3,6.6,13.5,10,13.5 M10,0.5c-2.8,0-5,2.2-5,5s2.2,5,5,5s5-2.2,5-5S12.8,0.5,10,0.5z M10,11.5c-3,0-9,1.5-9,4.6v3.4h18
+                              v-3.4C19,13,13,11.5,10,11.5z"/>
+                      </svg>
+                  </div>
+                  <div class="user__wrap">
+                      <p class="user__name">
+                          Ковальский Олег
+                      </p>
+                      <div class="btn-square user__btn-square">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="4" height="16" viewBox="0 0 4 16">
+                              <g>
+                                  <g>
+                                      <path fill="#fff"
+                                            d="M4 14c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm0-6c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zM0 2C0 .9.9 0 2 0s2 .9 2 2-.9 2-2 2-2-.9-2-2z"/>
+                                  </g>
+                              </g>
+                          </svg>
+                      </div>
+                  </div>
+                  <div class="user__log-out btn-square">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18">
+                          <g>
+                              <g>
+                                  <path fill="#fff"
+                                        d="M2 16h8v2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0h8v2H2zm18-7l-5 5-1.41-1.42L16.17 10H6V8h10.17l-2.58-2.59L15 4z"/>
+                              </g>
+                          </g>
+                      </svg>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!-- /HEADER -->
+
+  <!-- MAIN -->
+  <div class="main">
+    <!-- add partials here -->
+    <section class="alter-container content alter-container_bg-col-solitude">
+        <div class="container">
+            <div class="nav-bottom">
+                <div class="nav-bottom__top-wrap">
+                    <div class="nav-bottom__left nav-bottom__item nav-bottom__find-title">
+                        <div class="nav-bottom__result-wrap">
+                            <div class="title">
+                                <h3>Пошук по авто</h3>
+                            </div>
+                        </div>
+                        <button type="button" class="back btn-square btn-square_bg-col-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="8" viewBox="0 0 16 8"><g><g><path fill="#0a2352" d="M4 3h12v2H4v3L0 4l4-4z"/></g></g></svg>
+                        </button>
+                    </div>
+                    <ul class="nav-bottom__right nav-bottom__item">
+                        <li class="item">
+                            <button type="button" class="btn-square btn-square_bg-col-astr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="22" viewBox="0 0 26 22">
+                                    <g>
+                                        <g>
+                                            <g>
+                                                <path fill="#fff"
+                                                      d="M4 13.5a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0zm15 0a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0zm5 4.5h-4.884l-1.45-2.42c-.305-.508-.792-.808-1.31-.808H9.708c-.534 0-1.034.318-1.335.85L7.029 18H2v-5.726C2 10.469 3.409 9 5.14 9h15.72C22.59 9 24 10.448 24 12.228zM9.18 2h7.643c1.283 0 2.475.873 3.033 2.217L21 7H5l1.144-2.778C6.705 2.872 7.896 2 9.18 2zm15.335 6.344l-2.796-5.24C20.688 1.19 18.658 0 16.421 0H9.576C7.342 0 5.313 1.188 4.278 3.106l-2.775 5.19a1.583 1.583 0 0 0-.074.162A5.501 5.501 0 0 0 0 12.147v8.32C0 21.314.661 22 1.477 22h1.906c.816 0 1.477-.686 1.477-1.533V19.7h16.28v.767c0 .847.66 1.533 1.477 1.533h1.906c.816 0 1.477-.686 1.477-1.533v-8.355c0-1.39-.516-2.693-1.46-3.714-.008-.018-.016-.037-.025-.054z"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="btn-square btn-square_bg-col-astr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24">
+                                    <g>
+                                        <g>
+                                            <g>
+                                                <path fill="#fff"
+                                                      d="M16.259 20a4.327 4.327 0 0 0 3.09-1.325 4.54 4.54 0 0 0 1.272-3.176C20.62 13.014 16.259 8 16.259 8s-4.362 5.014-4.362 7.5a4.54 4.54 0 0 0 1.27 3.175 4.326 4.326 0 0 0 3.092 1.324zm-3.263 2c-1.992-1.094-3.156-3.843-3.156-6.285 0-2.011 1.607-5.102 3.16-7.16V6.841L11.306 6H7.132L2 8.996V22zM8 2v2h3V2zm15 13.36c0 3.352-3.242 6.69-6.504 6.69a5.694 5.694 0 0 1-1.556-.241v.91a1.29 1.29 0 0 1-.363.904c-.233.24-.55.376-.882.377H1.245a1.237 1.237 0 0 1-.882-.377A1.29 1.29 0 0 1 0 22.72V8c0-.387.173-.753.467-.996L6.361 4V1.168a1.29 1.29 0 0 1 .363-.903C6.957.025 7.139 0 7.47 0h3.735c.332.001.649.137.882.377.234.24.364.565.363.903v2.03l2.126 1.385c.233.24.364.566.364.905v1.041c.272-.33 1.203-1.17 1.556-1.17.354 0 6.504 6.9 6.504 9.889zM7.25 9c.432.023.767.47.75 1v6c.017.529-.318.977-.75 1h-1.5c-.432-.023-.767-.471-.75-1v-6c-.017-.529.318-.977.75-1z"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="btn-square btn-square_bg-col-astr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22">
+                                    <g>
+                                        <g>
+                                            <path fill="#fff"
+                                                  d="M20 2h-3v2h-2V.97c-.016-.518.378-.952.88-.97h5.24c.502.018.896.452.88.97V4h-2zm-5 3.03V4H9v1.03c.016.518-.378.953-.88.97h7.76c-.502-.017-.896-.452-.88-.97zm7 0c.016.518-.378.953-.88.97H22v14H2V6h.879c-.502-.018-.895-.452-.879-.97V4H.74a.7.7 0 0 0-.524.244.888.888 0 0 0-.216.59v16.333c0 .22.077.433.216.589A.7.7 0 0 0 .74 22h22.523a.7.7 0 0 0 .522-.244.888.888 0 0 0 .216-.589V4.833a.888.888 0 0 0-.216-.589.7.7 0 0 0-.522-.244H22zM7 2H4v2H2V.97c-.016-.518.378-.952.88-.97h5.24c.502.018.896.452.88.97V4H7zM5 13a1 1 0 0 0 1 1h4a1 1 0 0 0 0-2H6a1 1 0 0 0-1 1zm8 0a1 1 0 0 0 1 1h1v1a1 1 0 0 0 1 1h.4a1 1 0 0 0 1-1v-1h.6a1 1 0 0 0 0-2h-.6v-1a1 1 0 0 0-1-1H16a1 1 0 0 0-1 1v1h-1a1 1 0 0 0-1 1z"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="btn-square btn-square_bg-col-astr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 16 24">
+                                    <g>
+                                        <g>
+                                            <g>
+                                                <path fill="#fff"
+                                                      d="M14.004 16h-12v-1h2a1 1 0 0 0 1-1v-1h6v1a1 1 0 0 0 1 1h2zm-2.984 4h-6v-2h6zM6.004 5a2 2 0 1 1 4 0v6h-4V5zm9 8h-2v-1a1 1 0 0 0-1-1V5a4.001 4.001 0 0 0-3-3.874V1a1 1 0 1 0-2 0v.126c-1.725.444-3 2.01-3 3.874v6a1 1 0 0 0-1 1v1h-2a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h2v3a1 1 0 0 0 1 1h1v1a1 1 0 1 0 2 0v-1h2v1a1 1 0 0 0 2 0v-1h1a1 1 0 0 0 1-1v-3h2a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" class="btn-square btn-square_bg-col-astr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <g>
+                                        <g>
+                                            <g/>
+                                            <g>
+                                                <path fill="#fff"
+                                                      d="M24 9.084c-3.235 3.363-7.06 10.644-7.06 10.644s-2.396-1.413-4.808-1.464l.69 1.91-2.255.826-.86-2.38c-1.504.433-2.649 1.108-2.649 1.108S3.232 12.444 0 9.084c1.498-1.56 3.109-2.844 4.897-3.775L4 2.827 6.255 2l.857 2.371c1.499-.494 3.118-.76 4.888-.76 4.966 0 8.75 2.088 12 5.473zm-12 6.815c1.956 0 3.874 1.411 3.874 1.411s2.449-5.324 4.926-8.034c-2.51-2.105-5.573-3.247-8.8-3.247-1.395 0-2.76.214-4.063.626l3.361 9.3c.231-.035.466-.056.702-.056zM8.123 17.31s.353-.259.91-.555L5.718 7.582A14.215 14.215 0 0 0 3.2 9.276c2.498 2.732 4.923 8.034 4.923 8.034z"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-bottom__nav-buttons nav-buttons">
+                    <button class="nav-buttons__item" type="button">Ваш автомобіль</button>
+                    <button class="nav-buttons__item">Історія вибірки</button>
+                </div>
+            </div>
+            <div class="cat-fil-wrap">
+                <div class="filter filter-car">
+                    <ul class="filter-car-list">
+                        <li class="filter-car-list__item select-wrap picked">
+                            <strong>Марка</strong>
+                            <ul class="select-wrap__list">
+                                <li>fsdf</li>
+                            </ul>
+                        </li>
+                        <li class="filter-car-list__item select-wrap">
+                            <strong>Модель</strong>
+                            <ul class="select-wrap__list">
+                                <li>fsdf</li>
+                            </ul>
+                        </li>
+                        <li class="filter-car-list__item select-wrap">
+                            <strong>Модифікація</strong>
+                            <ul class="select-wrap__list">
+                                <li>fsdf</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="filter-list">
+                        <li class="filter-list__item">
+                            <div class="filter-list__wrap active">
+                                Історія вибірки <span class="indicator">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><g><g transform="rotate(180 6 4)"><path fill="#fff" d="M1.41-.59L6 3.99l4.59-4.58L12 .82l-6 6-6-6z"/></g></g></svg>
+                            </span>
+                            </div>
+                            <ul class="sub-list">
+                                <li class="sub-list__item">
+                                    <a href="#">
+                                        <strong>bmw 2 купе (f22, f87)</strong>
+                                        <p>Система подачи топлива</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="wrapper">
+                    <div class="table">
+                        <div class="table__header header">
+                            <h3 class="header__item modification-title">Модифікація</h3>
+                            <h3 class="header__item type-title">Тип двиг.</h3>
+                            <h3 class="header__item model-title">Модель двиг.</h3>
+                            <h3 class="header__item engine-volume-title">Об’єм двиг.</h3>
+                            <h3 class="header__item power-title">Потужність</h3>
+                            <h3 class="header__item body-title">Кузов</h3>
+                            <h3 class="header__item release-title">Дата випуска</h3>
+                        </div>
+                        <div class="table__list list">
+                            <a href="#" class="list__link link">
+                                <p class="link__item modification">BMW 2 купе (F22, F87) 220 d</p>
+                                <p class="link__item type">Бензиновый двигатель</p>
+                                <p class="link__item model">N20 B20 AN26 B20 A</p>
+                                <p class="link__item engine-volume">2 l/1997 ccm</p>
+                                <p class="link__item power">250 kW/340 PS</p>
+                                <p class="link__item body">купе</p>
+                                <p class="link__item release">10.2012 - 11.2014</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <aside class="sidebar">
+                <nav class="sidebar-wrap">
+                    <ul class="sidebar-list">
+                        <li>
+                            <a href="#" class="btn-square btn-square_bg-col-astr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+                                    <g>
+                                        <g>
+                                            <path fill="#fff"
+                                                  d="M17.588 17.6c-1.206 0-2.183.99-2.183 2.2 0 1.21.977 2.2 2.184 2.2 1.206 0 2.194-.99 2.194-2.2 0-1.21-.988-2.2-2.195-2.2zm-10.99 0c-1.21 0-2.189.99-2.189 2.2 0 1.21.979 2.2 2.189 2.2s2.199-.99 2.199-2.2c0-1.21-.99-2.2-2.2-2.2zM5.674 4.4h13.36l-3.035 5.5H8.28zm10.325 7.7c.825 0 1.55-.451 1.924-1.133l3.937-7.139a1.096 1.096 0 0 0-.957-1.628H4.63L3.596 0H0v2.2h2.2l3.958 8.349-1.485 2.684c-.802 1.474.253 3.267 1.925 3.267h13.195v-2.2H6.598l1.21-2.2z"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <span class="count">2</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-square btn-square_bg-col-astr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22">
+                                    <g>
+                                        <g>
+                                            <path fill="#fff"
+                                                  d="M19.617 12.481l-.605.653.086.854.195 1.959-2.053.432-.907.19-.476.744L14.787 19l-1.923-.773-.864-.342-.854.342L9.223 19l-1.07-1.677-.475-.744-.907-.19-2.053-.432.194-1.969.087-.854-.605-.653L3 11.005l1.394-1.486.605-.653-.097-.864-.195-1.949 2.053-.432.907-.19.476-.744L9.213 3l1.923.773.864.342.854-.342L14.777 3l1.07 1.687.475.744.907.19 2.053.432-.194 1.959-.087.854.605.653L21 10.995zM24 10.99l-2.662-2.923.371-3.866-3.938-.86L15.709 0 12 1.53 8.29 0 6.23 3.342l-3.94.848.372 3.877L0 10.99l2.662 2.922-.371 3.877 3.938.859L8.291 22 12 20.46l3.71 1.53 2.06-3.342 3.94-.86-.372-3.865z"/>
+                                        </g>
+                                        <g>
+                                            <path fill="#fff"
+                                                  d="M16 8.515L9.515 15 8.1 13.586 14.586 7.1zM11 8.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm5 5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-square btn-square_bg-col-astr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <g>
+                                        <g>
+                                            <g/>
+                                            <g>
+                                                <path fill="#fff"
+                                                      d="M17 10H7V8h10zm-5 4H7v-2h5zm7-11H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10l6-6V5c0-1.1-.9-2-2-2zm0 2v9h-5v5H5V5h14"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-square btn-square_bg-col-astr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <g>
+                                        <g>
+                                            <g/>
+                                            <g>
+                                                <path fill="#fff"
+                                                      d="M12 1L8.909 8.328 1 9.002l6.006 5.228L5.202 22 12 17.877 18.798 22l-1.804-7.77L23 9.002l-7.909-.674zm0 5l1.139 2.827.552 1.37 1.409.124 2.9.26-2.207 2.012-1.069.975.317 1.457L15.7 18l-2.49-1.58L12 15.63l-1.21.765-2.489 1.58L8.96 15l.317-1.457-1.069-.975L6 10.556l2.9-.26 1.41-.123.551-1.37L12 6"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-square btn-square_bg-col-astr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                                    <g>
+                                        <g>
+                                            <path fill="#fff"
+                                                  d="M16 14.46c-.88-.06-1.75-.21-2.6-.45l-1.2 1.2c1.2.41 2.48.67 3.8.76zM2.03 2c.09 1.32.35 2.58.75 3.79l1.2-1.21c-.23-.83-.38-1.7-.45-2.58zM18 13.5V17c0 .55-.45 1-1 1C7.61 18 0 10.39 0 1c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1l-2.2 2.21c1.44 2.84 3.76 5.15 6.59 6.59l2.2-2.2c.2-.19.45-.29.71-.29.1 0 .21.02.31.05 1.12.37 2.32.57 3.57.57.55 0 1 .45 1 1zM9 2V0a9 9 0 0 1 9 9h-2c0-3.87-3.13-7-7-7zm0 4V4c2.76 0 5 2.24 5 5h-2c0-1.66-1.34-3-3-3z"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-square btn-square_bg-col-astr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <g>
+                                        <g>
+                                            <g/>
+                                            <g>
+                                                <path fill="#fff"
+                                                      d="M12.89 11.1c-1.78-.59-2.64-.96-2.64-1.9 0-1.02 1.11-1.39 1.81-1.39 1.31 0 1.79.99 1.9 1.34l1.58-.67c-.15-.44-.82-1.91-2.66-2.23V5h-1.75v1.26c-2.6.56-2.62 2.85-2.62 2.96 0 2.27 2.25 2.91 3.35 3.31 1.58.56 2.28 1.07 2.28 2.03 0 1.13-1.05 1.61-1.98 1.61-1.82 0-2.34-1.87-2.4-2.09l-1.66.67c.63 2.19 2.28 2.78 3.02 2.96V19h1.75v-1.24c.52-.09 3.02-.59 3.02-3.22.01-1.39-.6-2.61-3-3.44zM12 21c-4.961 0-9-4.039-9-9s4.039-9 9-9 9 4.039 9 9-4.039 9-9 9zm0-20C5.928 1 1 5.928 1 12s4.928 11 11 11 11-4.928 11-11S18.072 1 12 1z"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-square btn-square_bg-col-astr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <g>
+                                        <g>
+                                            <g/>
+                                            <g>
+                                                <path fill="#fff"
+                                                      d="M12 7v5.32L16.233 15 17 13.638l-3.506-2.223V7zm.571-5c-5.206 0-9.428 4.254-9.428 9.5H0l4.075 4.106.074.148L8.38 11.5H5.238c0-4.085 3.28-7.389 7.333-7.389 4.055 0 7.334 3.304 7.334 7.389 0 4.085-3.28 7.389-7.334 7.389a7.247 7.247 0 0 1-5.175-2.175l-1.487 1.5A9.346 9.346 0 0 0 12.57 21C17.778 21 22 16.746 22 11.5S17.778 2 12.571 2z"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-square btn-square_bg-col-astr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="22" viewBox="0 0 18 22">
+                                    <g>
+                                        <g>
+                                            <path fill="#fff"
+                                                  d="M14 8.714C14 6.116 11.49 4 9 4S4 6.116 4 8.714V16h10zm4 8.195V18H0v-1.09l2.25-2.183V9.273c0-3.36 1.845-6.153 5.063-6.895v-.742C7.313.731 8.066 0 9 0s1.688.73 1.688 1.636v.742c3.228.742 5.062 3.546 5.062 6.895v5.454zM7 20h5c0 1.1-1.125 2-2.5 2S7 21.1 7 20z"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <span class="count">5</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+    </section>
+
+  </div>
+  <!-- /MAIN -->
+
+  <!--    //= partials/footer.html-->
+
+</div>
+
+<!-- SCRIPTS -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+
+<script src="scripts/main.js"></script>
+
+<!-- /SCRIPTS -->
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "edit": "Edit workshop",
+  "create": "Create workshop",
+  "workshops": "Workshops",
+  "workshop": "workshop",
+  "list": "Workshops list",
+
+  "name": "Name",
+  "address": "Address",
+  "description": "Description",
+  "confirmed": "Confirmed",
+  "created_at": "Created at",
+  "updated_at": "Updated at"
+}

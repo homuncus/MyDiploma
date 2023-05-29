@@ -1,0 +1,11 @@
+{
+  "errors": "[object Object]",
+  "login": "Войти",
+  "siginIn": "Войти",
+  "siginInOut": "Выйти",
+  "siginInInfo": "Введите адрес электронной почты и пароль",
+  "email": "Email",
+  "password": "Пароль",
+  "userBlocked": "Пользователь заблокирован",
+  "userRolesNotPassed": "Роли пользователя не переданы"
+}

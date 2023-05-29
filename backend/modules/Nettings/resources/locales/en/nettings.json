@@ -1,0 +1,13 @@
+{
+  "edit": "Edit netting",
+  "create": "Create netting",
+  "nettings": "Nettings",
+  "netting": "netting",
+  "list": "Nettings list",
+
+  "type_id": "Type",
+  "size": "Size",
+  "color": "Color",
+  "created_at": "Created at",
+  "updated_at": "Updated at"
+}

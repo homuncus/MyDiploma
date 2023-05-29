@@ -1,0 +1,12 @@
+{
+  "edit": "Edit user workshop participation",
+  "create": "Create user workshop participation",
+  "userWorkshops": "Users in workshops",
+  "userWorkshop": "user workshop",
+  "list": "Users in workshops list",
+
+  "user_id": "User",
+  "workshop_id": "Workshop",
+  "created_at": "Created at",
+  "updated_at": "Updated at"
+}

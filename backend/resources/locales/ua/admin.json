@@ -1,0 +1,67 @@
+{
+  "home": "Головна",
+  "cancel": "Скасувати",
+  "save": "Зберегти",
+  "general": "Загальне",
+  "common": "Звичайне",
+  "name": "Назва",
+  "create": "Створити",
+  "edit": "Редагувати",
+  "view": "Перегляд",
+  "remove": "Вилучити",
+  "duplicate": "Клонувати",
+  "search": "Шукати",
+  "login_as": "Увійти як",
+
+
+  "dashboard": "Головна панель",
+  "admin": "Адмін",
+  "admin_users": "Користувачі-адміни",
+  "roles": "Ролі та Дозволи",
+  "settings": "Налаштування",
+  "ui": "UI",
+  "development": "Розробка",
+
+  "users_list": "Список користувачів",
+  "roles_list": "Список ролей",
+  "experimental": "Експериментальний",
+
+  "save_settings": "Зберегти налаштування",
+
+  "create_new_user": "Створити нового користувача",
+  "edit_user": "Редагувати користувача",
+  "blocked": "Заблоковано",
+  "account": "Акаунт",
+  "security": "Безпека",
+  "password": "Пароль",
+  "confirm_password": "Підтвердити пароль",
+  "permissions": "Дозволи",
+  "login": "Вхід",
+  "email": "Електронна скринька",
+  "first_name": "Ім'я",
+  "last_name": "Призвіще",
+  "actions": "Дії",
+
+  "create_new_role": "Створити роль",
+  "edit_role" : "Редагувати роль",
+
+  "role": "Роль",
+
+  "slug": "Слаг",
+  "description": "Опис",
+
+  "signout": "Вийти",
+
+  "datatables_info": "Показую сторінку _PAGE_ з _PAGES_",
+  "datatables_search": "Пошук",
+  "datatables_show": "Показати _MENU_ записів",
+
+  "shop": "Магазин",
+  "category": "Категорія",
+
+  "service": "Сервіс",
+  "title_name": "CMS",
+  "send": "Надіслати",
+  "reject_reason": "Причина відмови",
+  "close": "закрити"
+}

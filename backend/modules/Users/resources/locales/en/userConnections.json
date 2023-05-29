@@ -1,0 +1,13 @@
+{
+  "edit": "Edit connection",
+  "create": "Create connection",
+  "userConnections": "Friend connections",
+  "userConnection": "connection",
+  "list": "User friends list",
+
+  "user_id": "User",
+  "friend_id": "Friend",
+  "accepted": "Accepted",
+  "created_at": "Created at",
+  "updated_at": "Updated at"
+}
