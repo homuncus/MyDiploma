@@ -1,4 +1,5 @@
 import { ElMessage } from 'element-plus'
+import axiosStatic from 'axios';
 
 /**
  * Function wrapper to process an `AxiosError` more beautifully
@@ -7,9 +8,9 @@ import { ElMessage } from 'element-plus'
  * @param errorCb 
  * @returns result of the given function
  */
-export default async function process(fn: Function, successCb?: (msg: typeof ElMessage) => any, errorCb?: (msg: typeof ElMessage) => any) {
+export default async function process(fn: (axios: typeof axiosStatic, apiUrl: string) => any, successCb?: (msg: typeof ElMessage) => any, errorCb?: (msg: typeof ElMessage) => any) {
   try {
-    const res = await fn();
+    const res = await fn(axiosStatic, String(import.meta.env.VITE_API_URL));
     if (successCb)
       successCb(ElMessage)
     return res;

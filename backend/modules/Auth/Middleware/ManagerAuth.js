@@ -5,9 +5,6 @@ const Logger = use('Logger');
 class ManagerAuth {
   async handle({ request, response, view, auth }, next) {
     try {
-      if (request.ajax()) {
-        return next();
-      }
       const authUser = await auth.authenticator('manager').getUser();
       await authUser.isBlocked();
 

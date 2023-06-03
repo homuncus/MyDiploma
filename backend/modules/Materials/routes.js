@@ -33,4 +33,4 @@ Route.group(() => {
   Route.delete('/:id', '@provider:Materials/Controllers/MaterialsController.delete');
   Route.patch('/:id', '@provider:Materials/Controllers/MaterialsController.save');
   Route.get('/:id', '@provider:Materials/Controllers/MaterialsController.show');
-}).prefix('api/materials').middleware('auth');
+}).prefix('api/materials').middleware('auth:jwt');

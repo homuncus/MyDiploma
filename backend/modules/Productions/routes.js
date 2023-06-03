@@ -36,4 +36,4 @@ Route.group(() => {
   Route.patch('/:id', '@provider:Productions/Controllers/ProductionsController.save');
   Route.get('/:id', '@provider:Productions/Controllers/ProductionsController.show');
   Route.get('/:id/users', '@provider:Productions/Controllers/ProductionsController.save');
-}).prefix('api/productions').middleware('auth');
+}).prefix('api/productions').middleware('auth:jwt');

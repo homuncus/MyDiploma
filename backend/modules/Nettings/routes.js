@@ -65,4 +65,4 @@ Route.group(() => {
   Route.delete('/:id', '@provider:Nettings/Controllers/NettingsController.delete');
   Route.patch('/:id', '@provider:Nettings/Controllers/NettingsController.save');
   Route.get('/:id', '@provider:Nettings/Controllers/NettingsController.show');
-}).prefix('api/nettings').middleware('auth');
+}).prefix('api/nettings').middleware('auth:jwt');

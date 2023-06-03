@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
-import { isDark, toggleDark } from '@/composables';
+import { isDark, toggleDark } from '../../composables';
 import { Sunny, Moon } from '@element-plus/icons-vue'
 </script>
 

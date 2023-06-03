@@ -17,13 +17,15 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios';
 import processAxios from '@/services/AxiosProcessor'
+import setHeaders from '@/services/SetAxiosHeaders'
 import { useUserStore } from '@/stores';
 import { Message, Lock } from '@element-plus/icons-vue'
 
 export default {
   setup() {
+    console.log(useUserStore());
+
     return {
       Message,
       Lock,
@@ -68,11 +70,20 @@ export default {
         this.loading = false;
         return;
       }
-      
-      await processAxios(async () => {
-        const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, this.formData)
+
+      await processAxios(async (axios, apiUrl) => {
+        const response = await axios.post(`${apiUrl}/auth/login`, this.formData)
         const userStore = useUserStore();
-        userStore.$patch(response.data.user);
+        const { data } = response
+        const token = data.access_token
+        userStore.$patch(data);
+
+        setHeaders({
+          Authorization: `${token.type} ${token.token}`
+        })
+
+        const redirect = { name: this.$router.currentRoute.value.query.redirect?.toString() }
+        this.$router.push(redirect || { name: 'workshops' })
       }, undefined, (msg) => msg.error('Check the e-mail or password and try again!'))
       this.loading = false;
     },
@@ -80,6 +91,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

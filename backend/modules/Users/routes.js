@@ -87,9 +87,9 @@ Route.group(() => {
   Route.get('/', '@provider:Users/Controllers/UsersController.list');
   Route.post('/', '@provider:Users/Controllers/UsersController.save');
   Route.get('/:id', '@provider:Users/Controllers/UsersController.show');
-  Route.delete('/:id', '@provider:Users/Controllers/UsersController.delete').middleware('auth');
-  Route.patch('/:id', '@provider:Users/Controllers/UsersController.save').middleware('auth');
-  Route.post('/:id/sendFriendRequest', '@provider:Users/Controllers/UserConnectionsController.send').middleware('auth');
+  Route.delete('/:id', '@provider:Users/Controllers/UsersController.delete').middleware('auth:jwt');
+  Route.patch('/:id', '@provider:Users/Controllers/UsersController.save').middleware('auth:jwt');
+  Route.post('/:id/sendFriendRequest', '@provider:Users/Controllers/UserConnectionsController.send').middleware('auth:jwt');
   Route.get('/:id/friends', '@provider:Users/Controllers/UsersController.friends');
   Route.get('/:id/productions', '@provider:Users/Controllers/UsersController.productions');
   Route.get('/:id/workshops', '@provider:Users/Controllers/UsersController.workshops');

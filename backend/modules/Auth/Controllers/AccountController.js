@@ -5,6 +5,8 @@ const Notify = use('ADM/Notify');
 
 // const User = use('Users/Models/User');
 
+const User = use('Users/Models/User');
+
 class AccountController {
   index({ view }) {
     return view.render('Auth.account.login');
@@ -20,7 +22,7 @@ class AccountController {
 
       return Notify.success(__('Auth.login.login'), { path: Route.url(Config.get('admin.general.afterLogin')) });
     } catch (error) {
-      console.log(error)
+      console.log(error);
       await auth.authenticator('manager').logout();
 
       switch (error) {
@@ -34,21 +36,27 @@ class AccountController {
     }
   }
 
-  async loginUser({ request, response, auth, __ }) {
+  async loginUser({
+    request, response, auth, __
+  }) {
+    const { email, password } = request.only(['email', 'password']);
+
     try {
-      const { email, password } = request.only(['email', 'password']);
-
-      const authUser = await auth.withRefreshToken().attempt(email, password, true);
-
-      await authUser.isBlocked();
-
-      return response.json({ user: authUser });
+      if (!await auth.authenticator('jwt').attempt(email, password)) {
+        // eslint-disable-next-line no-throw-literal
+        throw 'AUTH_FAIL';
+      }
+      const user = await User.findBy('email', email);
+      const accessToken = await auth.authenticator('jwt').generate(user);
+      return response.json({ user, access_token: accessToken });
     } catch (error) {
       switch (error) {
         case 'USER_BLOCKED':
-          return response.forbidden().json(Notify.error(__('Auth.login.errors.blocked')));
+          return response.forbidden(Notify.error(__('Auth.login.errors.blocked')));
+        case 'AUTH_FAIL':
+          return response.badRequest(Notify.error(error));
         default:
-          return response.status(500).json(Notify.error(error.message));
+          return response.status(500).json(Notify.error(error));
       }
     }
   }

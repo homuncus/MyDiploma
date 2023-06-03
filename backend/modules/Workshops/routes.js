@@ -53,10 +53,10 @@ Route.group(() => {
 }).prefix('admin').middleware('adminPanelLocal');
 
 Route.group(() => {
-  Route.get('/', '@provider:Workshops/Controllers/WorkshopsController.list');
+  Route.get('/', '@provider:Workshops/Controllers/WorkshopsController.scrollList');
   Route.post('/', '@provider:Workshops/Controllers/WorkshopsController.save');
   Route.get('/:id', '@provider:Workshops/Controllers/WorkshopsController.show');
   Route.delete('/:id', '@provider:Workshops/Controllers/WorkshopsController.delete');
   Route.patch('/:id', '@provider:Workshops/Controllers/WorkshopsController.save');
   Route.get('/:id/productions', '@provider:Workshops/Controllers/WorkshopsController.productions');
-}).prefix('api/workshops').middleware('auth');
+}).prefix('api/workshops').middleware('auth:jwt');

@@ -53,6 +53,23 @@ class WorkshopsController {
     return response.json(res);
   }
 
+  async scrollList({ request, response }) {
+    const query = Database
+      .select('workshops.id',
+        'workshops.name',
+        'workshops.address',
+        Database.raw('COUNT(users.id) AS users_count'),
+        'workshops.confirmed',
+        'workshops.created_at',
+        'workshops.updated_at')
+      .from('workshops')
+      .orderBy();
+
+    const table = new Datatables(query, request);
+    const res = await table.make();
+    return response.json(res);
+  }
+
   async edit({ response, params, __ }) {
     const { id } = params;
     const data = await Workshop.find(id);

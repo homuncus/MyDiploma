@@ -9,6 +9,10 @@ const TableBuilder = use('ADM/TableBuilder');
 // const { validate } = use('Validator');
 
 const Production = use('Productions/Models/Production');
+const User = use('Users/Models/User');
+const Workshop = use('Workshops/Models/Workshop');
+const Netting = use('Nettings/Models/Netting');
+const Materials = use('Materials/Models/Material');
 
 class ProductionsController {
   async index({ view, auth, __ }) {

@@ -26,7 +26,6 @@
 </template>
   
 <script lang="ts">
-import axios from 'axios';
 import notExists from '@/services/CheckResourseItemExists'
 import processAxios from '@/services/AxiosProcessor'
 import { RouterLink } from 'vue-router';
@@ -117,8 +116,8 @@ export default {
         return;
       }
 
-      await processAxios(async () => {
-        await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`, this.formData)
+      await processAxios(async (axios, apiUrl) => {
+        await axios.post(`${apiUrl}/auth/signup`, this.formData)
       }, (msg) => {
         msg.success('Account created successfully!');
         this.$router.push({ name: 'login' });

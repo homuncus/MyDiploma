@@ -7,6 +7,12 @@ class Workshop extends Model {
     return 'workshops';
   }
 
+  static boot() {
+    super.boot();
+
+    this.addHook('beforeSave', 'Slugify.Slugify');
+  }
+
   users() {
     return this.belongsToMany('Users/Models/User')
       .pivotModel('Workshops/Models/UserWorkshop');

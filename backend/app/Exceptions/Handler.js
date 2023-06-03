@@ -22,9 +22,8 @@ class ExceptionHandler extends BaseExceptionHandler {
       // }
       // if (error.name === 'ExpiredJwtToken') {
       //   response.unauthorized({ error: error.message });
-    } else {
-      Logger.error(`ExceptionHandler ${error}`, error);
     }
+    Logger.error(`ExceptionHandler ${error}`, error);
     return response.status(error.status).json(error.message);
   }
 }

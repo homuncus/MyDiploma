@@ -1,6 +1,6 @@
 'use strict';
 
-const User = use('Adm/Models/User');
+const User = use('Users/Models/User');
 
 class AdminRoleUserSeeder {
   async run() {
@@ -10,6 +10,7 @@ class AdminRoleUserSeeder {
       },
       {
         email: 'cot.cotenov@gmail.com',
+        username: 'marselopistola',
         password: '123123',
       }
     );
