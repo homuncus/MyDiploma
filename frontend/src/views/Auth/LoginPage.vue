@@ -71,16 +71,15 @@ export default {
         return;
       }
 
-      await processAxios(async (axios, apiUrl) => {
-        const response = await axios.post(`${apiUrl}/auth/login`, this.formData)
+      await processAxios(async (axios) => {
+        const response = await axios.post(`/auth/login`, this.formData)
         const userStore = useUserStore();
         const { data } = response
-        const token = data.access_token
         userStore.$patch(data);
 
-        setHeaders({
-          Authorization: `${token.type} ${token.token}`
-        })
+        // setHeaders({
+        //   Authorization: `${token.type} ${token.token}`
+        // })
 
         const redirect = { name: this.$router.currentRoute.value.query.redirect?.toString() }
         this.$router.push(redirect || { name: 'workshops' })

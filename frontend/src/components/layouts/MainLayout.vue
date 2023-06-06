@@ -1,27 +1,17 @@
 <template>
-  <el-config-provider namespace="ep">
+  <div class="min-h-screen max-h-screen">
     <BaseHeader />
-    <div class="flex main-container">
+    <div class="flex">
       <BaseSide />
       <div class="w-full py-4">
         <router-view></router-view>
       </div>
     </div>
-  </el-config-provider>
+  </div>
+
 </template>
 
 <script lang="ts" setup>
 import BaseSide from '../BaseSide.vue';
 import BaseHeader from '../BaseHeader.vue';
 </script>
-
-<style>
-#app {
-  text-align: center;
-  color: var(--ep-text-color-primary);
-}
-
-.main-container {
-  height: calc(100vh - var(--ep-menu-item-height) - 3px);
-}
-</style>

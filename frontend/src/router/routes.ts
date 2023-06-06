@@ -6,12 +6,29 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../components/layouts/MainLayout.vue'),
     children: [
       {
-        path: '', redirect: { name: 'workshops' }, meta: { requiresAuth: true }
+        path: '', redirect: { name: 'workshops' },
+        meta: { requiresAuth: true }
       },
       {
         path: 'workshops',
         component: () => import('../views/Home/WorkshopsPage.vue'),
         name: 'workshops',
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'tasks',
+        component: () => import('../views/Home/TasksPage.vue'),
+        name: 'tasks',
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('../views/Home/TasksPage.vue'),
+        name: 'settings',
         meta: {
           requiresAuth: true
         }

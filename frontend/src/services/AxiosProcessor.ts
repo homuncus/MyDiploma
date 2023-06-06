@@ -1,5 +1,6 @@
 import { ElMessage } from 'element-plus'
-import axiosStatic from 'axios';
+import axios from 'axios';
+import { useUserStore } from '@/stores';
 
 /**
  * Function wrapper to process an `AxiosError` more beautifully
@@ -8,9 +9,11 @@ import axiosStatic from 'axios';
  * @param errorCb 
  * @returns result of the given function
  */
-export default async function process(fn: (axios: typeof axiosStatic, apiUrl: string) => any, successCb?: (msg: typeof ElMessage) => any, errorCb?: (msg: typeof ElMessage) => any) {
+export default async function process(fn: (axiosObj: typeof axios, apiUrl: string) => any, successCb?: (msg: typeof ElMessage) => any, errorCb?: (msg: typeof ElMessage) => any) {
+  axios.defaults.baseURL = import.meta.env.VITE_API_URL
+  axios.defaults.headers['Authorization'] = useUserStore().token || ''
   try {
-    const res = await fn(axiosStatic, String(import.meta.env.VITE_API_URL));
+    const res = await fn(axios, String(import.meta.env.VITE_API_URL));
     if (successCb)
       successCb(ElMessage)
     return res;
@@ -19,7 +22,12 @@ export default async function process(fn: (axios: typeof axiosStatic, apiUrl: st
       if (errorCb)
         errorCb(ElMessage)
     } else if (err.request) {
-      ElMessage.error('Network error, please try again later!');
+      ElMessage({
+        message: 'Network error, please try again later!',
+        type: 'error',
+        showClose: true,
+        grouping: true
+      });
     }
   }
 }

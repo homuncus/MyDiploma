@@ -1,34 +1,54 @@
 <template>
-  <ul v-infinite-scroll="load" class="infinite-list" style="overflow: auto">
-    <li v-for="i in count" :key="i" class="infinite-list-item">{{ i }}</li>
-  </ul>
+  <div v-infinite-scroll="load" class="m-4" :infinite-scroll-disabled="disabled">
+    <div v-for="workshop in workshops" :key="workshop.id" class="infinite-list-item p-2">
+      <div class="m-4">
+        {{ workshop.name }}
+      </div>
+    </div>
+  </div>
+  <p v-if="loading" class="text-center font-bold">Loading...</p>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-const count = ref(0)
-const load = () => {
-  count.value += 2
+import { ref, computed } from 'vue'
+import processAxios from '@/services/AxiosProcessor';
+
+interface Workshop {
+  id: number,
+  name: string,
+  address: string,
+  users_count: string
+}
+
+const workshops = ref<Workshop[]>([])
+const loading = ref(false)
+const noMore = ref(false)
+const disabled = computed(() => loading.value || noMore.value)
+
+const load = async () => {
+  loading.value = true
+  setTimeout(async () => {
+    await processAxios(async (axios) => {
+      const limit = 3
+      const fetched = [].concat((await axios.get(`/workshops?limit=${limit}&offset=${workshops.value.length}`)).data);
+      workshops.value = workshops.value.concat(fetched)
+
+      if (fetched.length < limit) {
+        noMore.value = true
+      }
+    })
+    
+    loading.value = false
+  }, 1000)
 }
 </script>
 
 <style>
-.infinite-list {
-  height: 300px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-.infinite-list .infinite-list-item {
+.infinite-list-item {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
   background: var(--el-color-primary-light-9);
-  margin: 10px;
   color: var(--el-color-primary);
+  border-radius: 0.25rem;
 }
-.infinite-list .infinite-list-item + .list-item {
-  margin-top: 10px;
-}
+
 </style>

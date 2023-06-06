@@ -11,16 +11,19 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
+import piniaPluginPersistedState from "pinia-plugin-persistedstate"
 
 // declare module '@vue/runtime-core' {
 //   interface ComponentCustomProperties {
 //       $flashMessage: FlashMessagePlugin
 //   }
 // }
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedState)
 
 const app = createApp(App)
   .use(router)
-  .use(createPinia())
+  .use(pinia)
   .use(ElementPlus)
   .component('font-awesome-icon', FontAwesomeIcon)
 

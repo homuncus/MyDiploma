@@ -27,6 +27,8 @@ export const useUserStore = defineStore('UserStore', {
   },
   getters: {
     password: () => null,
-    isLoggedIn: ({ access_token }) => !!access_token.token
-  }
+    isLoggedIn: ({ access_token }) => !!access_token.token,
+    token: ({ access_token }) => `${access_token.type} ${access_token.token}`
+  },
+  persist: true
 })

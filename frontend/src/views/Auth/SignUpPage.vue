@@ -116,8 +116,8 @@ export default {
         return;
       }
 
-      await processAxios(async (axios, apiUrl) => {
-        await axios.post(`${apiUrl}/auth/signup`, this.formData)
+      await processAxios(async (axios) => {
+        await axios.post(`/auth/signup`, this.formData)
       }, (msg) => {
         msg.success('Account created successfully!');
         this.$router.push({ name: 'login' });

@@ -54,20 +54,27 @@ class WorkshopsController {
   }
 
   async scrollList({ request, response }) {
-    const query = Database
+    const { offset, limit } = request.all();
+    const result = await Database
       .select('workshops.id',
         'workshops.name',
         'workshops.address',
-        Database.raw('COUNT(users.id) AS users_count'),
-        'workshops.confirmed',
+        'workshops.description',
+        Database.raw('COUNT("users"."id") AS users_count'),
         'workshops.created_at',
         'workshops.updated_at')
       .from('workshops')
-      .orderBy();
+      .leftJoin('user_workshops', 'user_workshops.workshop_id', 'workshops.id')
+      .leftJoin('users', 'user_workshops.user_id', 'users.id')
+      .where('workshops.confirmed', true)
+      .groupBy('workshops.id')
+      .orderBy('name', 'DESC')
+      .offset(offset)
+      .limit(limit);
 
-    const table = new Datatables(query, request);
-    const res = await table.make();
-    return response.json(res);
+    console.log(result);
+
+    return response.json(result);
   }
 
   async edit({ response, params, __ }) {

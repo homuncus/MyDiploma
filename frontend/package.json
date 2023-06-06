@@ -27,6 +27,7 @@
     "axios": "^1.4.0",
     "element-plus": "^2.3.5",
     "pinia": "^2.0.28",
+    "pinia-plugin-persistedstate": "^3.1.0",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2",
     "vue": "^3.3.2",
