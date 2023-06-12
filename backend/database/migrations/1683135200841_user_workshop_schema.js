@@ -13,6 +13,7 @@ class UserWorkshopSchema extends Schema {
       table.integer('workshop_id').unsigned().references('id').inTable('workshops')
         .onDelete('cascade')
         .onUpdate('cascade');
+      table.boolean('is_manager').defaultTo('false');
       table.timestamps();
     });
   }
