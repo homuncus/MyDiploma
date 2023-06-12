@@ -10,9 +10,14 @@ const routes: RouteRecordRaw[] = [
         meta: { requiresAuth: true }
       },
       {
-        path: 'workshops',
-        component: () => import('../views/Home/WorkshopsPage.vue'),
+        path: 'workshops/:slug?',
+        components: {
+          side: () => import('../views/Home/Workshops/WorkshopsList.vue'),
+          content: () => import('../views/Home/Workshops/Workshop.vue'),
+        },
         name: 'workshops',
+        props: { side: true, main: true },
+        // redirect: { name: 'workshops', params: { slug: 'hpfk-nu-"lp"' } },
         meta: {
           requiresAuth: true
         }

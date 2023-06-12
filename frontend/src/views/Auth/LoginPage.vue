@@ -18,14 +18,11 @@
 
 <script lang="ts">
 import processAxios from '@/services/AxiosProcessor'
-import setHeaders from '@/services/SetAxiosHeaders'
 import { useUserStore } from '@/stores';
 import { Message, Lock } from '@element-plus/icons-vue'
 
 export default {
   setup() {
-    console.log(useUserStore());
-
     return {
       Message,
       Lock,

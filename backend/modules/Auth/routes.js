@@ -28,19 +28,18 @@ Route.group(() => {
 
 Route.group(() => {
   Route
-    .post('auth/signup', '@provider:Users/Controllers/UsersController.save')
+    .post('signup', '@provider:Users/Controllers/UsersController.save')
     .as('auth.signup')
     .middleware('guest')
     .validator(['App/../modules/Auth/Validators/Signup']);
 
   Route
-    .post('auth/login', '@provider:Auth/Controllers/AccountController.loginUser')
+    .post('login', '@provider:Auth/Controllers/AccountController.loginUser')
     .as('auth.login')
     .middleware('guest')
     .validator(['App/../modules/Auth/Validators/Login']);
 
   Route
-    .post('auth/logout', '@provider:Auth/Controllers/AccountController.logoutUser')
-    .as('auth.logout')
-    .middleware('auth');
-}).prefix('api').as('api');
+    .get('check', '@provider:Auth/Controllers/AccountController.check')
+    .as('auth.check');
+}).prefix('api/auth').as('api');

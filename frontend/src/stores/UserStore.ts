@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+import processAxios from "@/services/AxiosProcessor";
 
 export const useUserStore = defineStore('UserStore', {
   state: () => {
@@ -23,6 +24,17 @@ export const useUserStore = defineStore('UserStore', {
     },
     async update(): Promise<any> {
       return await axios.patch(`${import.meta.env.VITE_API_URL}/users/${this.user.id}`, this.$state.user)
+    },
+    async checkToken() {
+      if (!this.access_token.token) return false
+      const valid = await processAxios(async (axios) => {
+        return (await axios.get('/auth/check')).data
+      })
+      console.log(valid);
+
+      if (!valid)
+        this.$reset()
+      return valid
     }
   },
   getters: {

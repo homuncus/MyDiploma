@@ -1,5 +1,6 @@
 const Route = use('Route');
 const Config = use('Config');
+const Database = use('Database');
 
 const Notify = use('ADM/Notify');
 
@@ -61,21 +62,21 @@ class AccountController {
     }
   }
 
+  async check({ request, response }) {
+    const token = request.header('Authorization');
+    const exists = !!(await Database
+      .select('*')
+      .from('tokens')
+      .whereRaw('type || \' \' || token = ?', token));
+    return response.send(exists);
+  }
+
   async logout({ auth, response }) {
     try {
       await auth.authenticator('manager').logout();
       return response.redirect(Route.url('admin.login.index'));
     } catch (error) {
       return response.redirect('back');
-    }
-  }
-
-  async logoutUser({ auth, response }) {
-    try {
-      await auth.logout();
-      return response.json(Notify.success('Logged out'));
-    } catch (error) {
-      return response.json(Notify.error(error.message));
     }
   }
 

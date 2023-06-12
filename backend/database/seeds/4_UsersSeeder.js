@@ -2,7 +2,7 @@
 
 const User = use('Users/Models/User');
 
-class AdminRoleUserSeeder {
+class UserSeeder {
   async run() {
     await User.findOrCreate(
       {
@@ -17,4 +17,4 @@ class AdminRoleUserSeeder {
   }
 }
 
-module.exports = AdminRoleUserSeeder;
+module.exports = UserSeeder;

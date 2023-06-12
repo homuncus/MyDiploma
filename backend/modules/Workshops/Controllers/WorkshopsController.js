@@ -54,27 +54,32 @@ class WorkshopsController {
   }
 
   async scrollList({ request, response }) {
-    const { offset, limit } = request.all();
-    const result = await Database
+    const { offset, limit, search } = request.all();
+    let result = Database
       .select('workshops.id',
         'workshops.name',
         'workshops.address',
+        'workshops.slug',
         'workshops.description',
         Database.raw('COUNT("users"."id") AS users_count'),
+        Database.raw('COUNT("nettings"."id") AS nettings_count'),
         'workshops.created_at',
         'workshops.updated_at')
       .from('workshops')
       .leftJoin('user_workshops', 'user_workshops.workshop_id', 'workshops.id')
       .leftJoin('users', 'user_workshops.user_id', 'users.id')
+      .leftJoin('productions', 'productions.workshop_id', 'workshops.id')
+      .leftJoin('nettings', 'nettings.id', 'productions.netting_id')
       .where('workshops.confirmed', true)
       .groupBy('workshops.id')
       .orderBy('name', 'DESC')
       .offset(offset)
       .limit(limit);
+    if (search) {
+      result = result.andWhereRaw('LOWER(workshops.name) LIKE ?', `%${search.toLowerCase()}%`);
+    }
 
-    console.log(result);
-
-    return response.json(result);
+    return response.json(await result);
   }
 
   async edit({ response, params, __ }) {
@@ -120,11 +125,11 @@ class WorkshopsController {
   }
 
   async show({ params, response }) {
-    const { id } = params;
+    const { slug } = params;
     const workshop = await Workshop.query()
       .with('users')
       .with('productions')
-      .where('id', id)
+      .where('slug', slug)
       .fetch();
 
     if (!workshop) {

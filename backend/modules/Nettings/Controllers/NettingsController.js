@@ -90,7 +90,7 @@ class NettingsController {
     } else {
       netting = await Netting.find(input.id);
       if (!netting) {
-        return response.notFound().json(Notify.error('Netting not found', {}));
+        return response.notFound(Notify.error('Netting not found', {}));
       }
     }
 
@@ -111,7 +111,7 @@ class NettingsController {
       .fetch();
 
     if (!netting) {
-      return response.notFound().json(Notify.error('Netting not found', {}));
+      return response.notFound(Notify.error('Netting not found', {}));
     }
 
     return response.json(netting.toJSON());
@@ -122,7 +122,7 @@ class NettingsController {
     const netting = await Netting.find(id);
 
     if (!netting) {
-      return response.notFound().json(Notify.error('Something went wrong. netting not found', {}));
+      return response.notFound(Notify.error('Something went wrong. netting not found', {}));
     }
 
     if (await netting.delete()) {

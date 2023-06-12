@@ -14,5 +14,5 @@
   "compilerOptions": {
     "types": ["element-plus/global"],
     "moduleResolution": "node"
-  }
+  },
 }

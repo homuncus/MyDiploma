@@ -8,7 +8,7 @@ class WorkshopSchema extends Schema {
     this.create('workshops', (table) => {
       table.increments();
       table.string('name').index().notNullable();
-      table.string('slug').index().notNullable();
+      table.string('slug').index().notNullable().unique();
       table.text('description').notNullable();
       table.text('address').notNullable();
       table.boolean('confirmed').defaultTo(false);

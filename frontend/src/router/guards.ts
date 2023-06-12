@@ -3,10 +3,11 @@ import { useUserStore } from "@/stores";
 
 export default function guard(router: Router) {
 
-  router.beforeEach((to, _from, next) => {
-    const store = useUserStore();
+  router.beforeEach(async (to, _from, next) => {
+    const userState = useUserStore();
+    await userState.checkToken()
     if (to.matched.some((record) => record.meta.requiresAuth)) {
-      if (!store.isLoggedIn) {
+      if (!userState.isLoggedIn) {
         next({
           name: 'login',
           query: { redirect: to.name?.toString() },
@@ -15,7 +16,7 @@ export default function guard(router: Router) {
         next()
       }
     } else if (to.matched.some((record) => record.meta.requiresGuest)) {
-      if (store.isLoggedIn) {
+      if (userState.isLoggedIn) {
         next({ path: '/' })
       } else {
         next()
