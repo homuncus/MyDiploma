@@ -3,23 +3,25 @@ import { type RouteRecordRaw } from 'vue-router';
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
+    meta: {
+      requiresAuth: true
+    },
     component: () => import('../components/layouts/MainLayout.vue'),
     children: [
       {
         path: '', redirect: { name: 'workshops' },
-        meta: { requiresAuth: true }
       },
       {
         path: 'workshops/:slug?',
         components: {
-          side: () => import('../views/Home/Workshops/WorkshopsList.vue'),
+          side: () => import('../views/Home/Workshops/List.vue'),
           content: () => import('../views/Home/Workshops/Workshop.vue'),
         },
         name: 'workshops',
-        props: { side: true, main: true },
+        props: { side: true, content: true },
         // redirect: { name: 'workshops', params: { slug: 'hpfk-nu-"lp"' } },
         meta: {
-          requiresAuth: true
+          activeIndex: 1
         }
       },
       {
@@ -27,15 +29,19 @@ const routes: RouteRecordRaw[] = [
         component: () => import('../views/Home/TasksPage.vue'),
         name: 'tasks',
         meta: {
-          requiresAuth: true
+          activeIndex: 2
         }
       },
       {
-        path: 'settings',
-        component: () => import('../views/Home/TasksPage.vue'),
+        path: 'settings/:slug?',
+        components: {
+          side: () => import('../views/Home/Settings/List.vue'),
+          content: () => import('../views/Home/Settings/Settings.vue'),
+        },
         name: 'settings',
+        props: { side: true, content: true },
         meta: {
-          requiresAuth: true
+          activeIndex: 3
         }
       }
     ]

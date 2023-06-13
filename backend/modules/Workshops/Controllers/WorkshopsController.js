@@ -9,6 +9,7 @@ const TableBuilder = use('ADM/TableBuilder');
 // const { validate } = use('Validator');
 
 const Workshop = use('Workshops/Models/Workshop');
+const UserWorkshop = use('Workshops/Models/UserWorkshop');
 
 class WorkshopsController {
   async index({ view, auth, __ }) {
@@ -124,19 +125,52 @@ class WorkshopsController {
     return response.json(Notify.success('Saved', {}));
   }
 
-  async show({ params, response }) {
-    const { slug } = params;
-    const workshop = await Workshop.query()
-      .with('users')
-      .with('productions')
-      .where('slug', slug)
-      .fetch();
+  async saveWithMembership({ request, response, auth }) {
+    const input = request.all();
+
+    const workshop = await Workshop.create(input);
 
     if (!workshop) {
-      return response.notFound().json(Notify.error('Workshop not found', {}));
+      return response.status(500).json(Notify.error('Not saved', {}));
     }
 
-    return response.json(workshop.toJSON());
+    await UserWorkshop.create({ // make a requester to be a manager of non-yet-confirmed place
+      user_id: (await auth.authenticator('jwt').getUser()).id,
+      workshop_id: workshop.id,
+      is_manager: true
+    });
+
+    return response.json(Notify.success('Saved', {}));
+  }
+
+  async show({ params, response, auth }) {
+    const { slug } = params;
+    const authUser = await auth.authenticator('jwt').getUser();
+
+    const workshop = await Database
+      .select('workshops.*')
+      .select('users.*')
+      .select('productions.*')
+      .select('netting.*')
+      .select(Database.raw(
+        `(SELECT COUNT(*) 
+          FROM user_workshops 
+          WHERE user_id = ? 
+          AND workshop_id = workshops.id
+        ) AS is_user_member`,
+        [authUser.id]
+      ))
+      .from('workshops')
+      .leftJoin('users', 'workshops.id', 'users.workshop_id')
+      .leftJoin('productions', 'workshops.id', 'productions.workshop_id')
+      .leftJoin('netting', 'productions.netting_id', 'netting.id')
+      .where('workshops.slug', slug);
+
+    if (!workshop) {
+      return response.notFound(Notify.error('Workshop not found', {}));
+    }
+
+    return response.json(workshop);
   }
 
   async productions({ params, response }) {
@@ -144,7 +178,7 @@ class WorkshopsController {
     const workshop = await Workshop.find(id);
 
     if (!workshop) {
-      return response.notFound().json(Notify.error('Workshop not found', {}));
+      return response.notFound(Notify.error('Workshop not found', {}));
     }
 
     const productions = await workshop.productions().fetch();
@@ -156,7 +190,7 @@ class WorkshopsController {
     const workshop = await Workshop.find(id);
 
     if (!workshop) {
-      return response.notFound().json(Notify.error('Something went wrong. workshop not found', {}));
+      return response.notFound(Notify.error('Something went wrong. workshop not found', {}));
     }
 
     if (await workshop.delete()) {

@@ -54,7 +54,7 @@ Route.group(() => {
 
 Route.group(() => {
   Route.get('/', '@provider:Workshops/Controllers/WorkshopsController.scrollList');
-  Route.post('/', '@provider:Workshops/Controllers/WorkshopsController.save');
+  Route.post('/', '@provider:Workshops/Controllers/WorkshopsController.saveWithMembership');
   Route.get('/:slug', '@provider:Workshops/Controllers/WorkshopsController.show');
   Route.delete('/:id', '@provider:Workshops/Controllers/WorkshopsController.delete');
   Route.patch('/:id', '@provider:Workshops/Controllers/WorkshopsController.save');

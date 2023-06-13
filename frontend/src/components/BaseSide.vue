@@ -1,9 +1,7 @@
 <template>
   <el-menu
-    default-active="1"
+    :default-active="activeIndex"
     :collapse="isCollapse"
-    @open="handleOpen"
-    @close="handleClose"
   >
     <!-- <el-sub-menu index="1">
       <template #title>
@@ -47,7 +45,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { useRoute } from 'vue-router'
 import {
   House,
   Document,
@@ -55,11 +54,17 @@ import {
   Setting,
 } from "@element-plus/icons-vue";
 
+const route = useRoute()
+
 const isCollapse = ref(true);
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
-};
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
-};
+const activeIndex = ref(1)
+
+const findActive = (): number => {
+  const index = route.matched[1].meta.activeIndex as number
+  if (!index) return 1
+  return index
+}
+onMounted(() => {
+  activeIndex.value = findActive()
+})
 </script>

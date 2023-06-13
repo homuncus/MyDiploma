@@ -54,12 +54,3 @@ const doSearch = () => {
   load()
 }
 </script>
-
-<style>
-.infinite-list-item {
-  display: flex;
-  background: var(--el-color-primary-light-9);
-  color: var(--el-color-primary);
-  border-radius: 0.25rem;
-}
-</style>
