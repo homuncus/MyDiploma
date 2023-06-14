@@ -102,8 +102,8 @@ class WorkshopsController {
     });
   }
 
-  async save({ request, response }) {
-    const input = request.all();
+  async save({ params, request, response }) {
+    const input = { ...request.all(), params };
 
     let workshop = {};
 

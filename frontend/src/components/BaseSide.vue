@@ -25,19 +25,25 @@
     </el-sub-menu> -->
     <router-link :to="{ name: 'workshops' }">
       <el-menu-item index="1">
-        <el-icon><house /></el-icon>
+        <el-icon><House /></el-icon>
         <template #title>Workshops</template>
       </el-menu-item>
     </router-link>
-    <router-link :to="{ name: 'tasks' }">
+    <router-link :to="{ name: 'chats' }">
       <el-menu-item index="2">
-        <el-icon><document /></el-icon>
+        <el-icon><Chat /></el-icon>
+        <template #title>Chats</template>
+      </el-menu-item>
+    </router-link>
+    <router-link :to="{ name: 'tasks' }">
+      <el-menu-item index="3">
+        <el-icon><Document /></el-icon>
         <template #title>Tasks</template>
       </el-menu-item>
     </router-link>
     <router-link :to="{ name: 'settings' }">
-      <el-menu-item index="3">
-        <el-icon><setting /></el-icon>
+      <el-menu-item index="4">
+        <el-icon><Setting /></el-icon>
         <template #title>Settings</template>
       </el-menu-item>
     </router-link>
@@ -52,6 +58,7 @@ import {
   Document,
   Menu as IconMenu,
   Setting,
+  ChatSquare as Chat
 } from "@element-plus/icons-vue";
 
 const route = useRoute()

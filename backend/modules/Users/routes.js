@@ -91,6 +91,10 @@ Route.group(() => {
   Route.patch('/:id', '@provider:Users/Controllers/UsersController.save').middleware('auth:jwt');
   Route.post('/:id/sendFriendRequest', '@provider:Users/Controllers/UserConnectionsController.send').middleware('auth:jwt');
   Route.get('/:id/friends', '@provider:Users/Controllers/UsersController.friends');
+
   Route.get('/:id/productions', '@provider:Users/Controllers/UsersController.productions');
   Route.get('/:id/workshops', '@provider:Users/Controllers/UsersController.workshops');
+
+  Route.get('/:id/messages/:userId', '@provider:Users/Controllers/UsersController.messages');
+  Route.get('/:id/chats', '@provider:Users/Controllers/UsersController.chats');
 }).prefix('api/users');

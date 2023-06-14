@@ -50,6 +50,21 @@ class User extends Model {
     return this.belongsToMany('Workshops/Models/Workshop')
       .pivotModel('Workshops/Models/UserWorkshop');
   }
+
+  messagesSent() {
+    return this.hasMany('Reports/Models/Message', 'id', 'sender_id');
+  }
+
+  messagesReceived() {
+    return this.hasMany('Reports/Models/Message', 'id', 'receiver_id');
+  }
+
+  async messagesWith(userId) {
+    const messagesAsSender = await this.messagesSent().where('receiever_id', userId).fetch();
+    const messagesAsReceiver = await this.messagesReceived().where('sender_id', userId).fetch();
+
+    return [...messagesAsSender, ...messagesAsReceiver];
+  }
 }
 
 module.exports = User;

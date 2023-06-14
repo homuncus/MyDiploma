@@ -26,3 +26,9 @@ Route.group(() => {
     .as('Reports.reports.save')
     .middleware(['managerAuth', 'managerCan:reports_edit']);
 }).prefix('admin').middleware('adminPanelLocal');
+ 
+Route.group(() => {
+  Route.post(':userId', '@provider:Reports/Controllers/MessageController.save');
+  Route.post(':messageId/report', '@provider:Reports/Controllers/ReportsController.save');
+  Route.patch(':id', '@provider:Reports/Controllers/MessageController.save');
+}).prefix('api/messages').middleware('auth:jwt');

@@ -89,13 +89,17 @@ class ReportsController {
     });
   }
 
-  async save({ request, response }) {
+  async save({ params, request, response, auth }) {
     const input = request.all();
+    const { messageId } = params;
 
     let report = {};
 
     if (!input.id) {
       report = new Report();
+      const authUser = await auth.authenticator('jwt').getUser();
+      report.message_id = messageId;
+      report.user_id = authUser.id;
     } else {
       report = await Report.find(input.id);
       if (!report) {

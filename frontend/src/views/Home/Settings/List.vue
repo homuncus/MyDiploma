@@ -14,26 +14,23 @@
 
 <script lang="ts" setup>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faTools, faLock, faBrush } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faTools, faBrush } from '@fortawesome/free-solid-svg-icons';
 
 const settings = [
   {
-    id: 0,
-    name: 'General',
-    link: 'general',
-    icon: faTools
+    name: 'Profile',
+    link: 'profile',
+    icon: faUser
   },
   {
-    id: 1,
-    name: 'Private',
-    link: 'private',
-    icon: faLock,
+    name: 'Account',
+    link: 'account',
+    icon: faTools,
   },
   {
-    id: 2,
     name: 'Appearance',
     link: 'appearance',
     icon: faBrush
   }
-]
+].map((val, id) => { return { ...val, id } })
 </script>

@@ -9,6 +9,7 @@ const TableBuilder = use('ADM/TableBuilder');
 // const { validate } = use('Validator');
 
 const User = use('Users/Models/User');
+const Message = use('Reports/Models/Message');
 
 class UsersController {
   async index({ view, auth, __ }) {
@@ -166,6 +167,52 @@ class UsersController {
       member: await user.productions().whereMember().fetch()
     };
     return response.json(productions);
+  }
+
+  async messages({ params, response, auth }) {
+    const { id, userId } = params;
+    const authUser = await auth.authenticator('jwt').getUser();
+    if (id !== authUser.id) return response.forbidden(Notify.error('No access'));
+    const user = await User.find(id);
+
+    const messages = await user.messagesWith(userId).fetch();
+
+    return response.json(messages.toJSON());
+  }
+
+  async chats({ params, request, response, auth }) {
+    const { id } = params;
+    const { limit, offset, search } = request.all();
+    const authUser = await auth.authenticator('jwt').getUser();
+
+    if (id !== authUser.id) return response.forbidden(Notify.error('No access'));
+
+    const conversations = await Message.query()
+      .select('receiver_id', 'sender_id')
+      .select(Database.raw('MAX(id) AS last_message_id'))
+      .where('receiver_id', id)
+      .orWhere('sender_id', id)
+      .groupBy('receiver_id', 'sender_id')
+      .havingRaw('count(*) > 0')
+      .with('interlocutor', (builder) => {
+        builder.where('users.id', '!=', id);
+      })
+      .with('lastMessage', (builder) => {
+        builder.whereRaw('messages.id = last_message_id');
+      })
+      .fetch();
+
+    const chats = conversations.toJSON().map((conversation) => {
+      const { interlocutor, last_message: lastMessage } = conversation;
+      console.log(conversation);
+      return {
+        id: interlocutor.id,
+        interlocutor,
+        lastMessage,
+      };
+    });
+
+    return response.json(chats);
   }
 }
 

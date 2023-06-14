@@ -17,8 +17,3 @@
 const Route = use('Route');
 
 Route.on('/').render('welcome').as('web.welcome');
-
-Route.group(() => {
-  Route.post(':userId', 'MessageController.send');
- Route.post(':messageId/report', 'MessageController.report')
-}).prefix('api/messages').middleware('auth:jwt');

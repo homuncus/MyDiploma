@@ -25,11 +25,24 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
+        path: 'chats/:slug?',
+        components: {
+          side: () => import('../views/Home/Chats/List.vue'),
+          content: () => import('../views/Home/Chats/Chat.vue'),
+        },
+        name: 'chats',
+        props: { side: true, content: true },
+        // redirect: { name: 'workshops', params: { slug: 'hpfk-nu-"lp"' } },
+        meta: {
+          activeIndex: 2
+        }
+      },
+      {
         path: 'tasks',
         component: () => import('../views/Home/TasksPage.vue'),
         name: 'tasks',
         meta: {
-          activeIndex: 2
+          activeIndex: 3
         }
       },
       {
@@ -41,7 +54,7 @@ const routes: RouteRecordRaw[] = [
         name: 'settings',
         props: { side: true, content: true },
         meta: {
-          activeIndex: 3
+          activeIndex: 4
         }
       }
     ]
