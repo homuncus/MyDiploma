@@ -26,7 +26,7 @@
 </template>
   
 <script lang="ts">
-import notExists from '@/services/CheckResourseItemExists'
+import { itemExists as notExists } from '@/services'
 import processAxios from '@/services/AxiosProcessor'
 import { RouterLink } from 'vue-router';
 import { Message, Lock, User } from '@element-plus/icons-vue'

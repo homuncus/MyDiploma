@@ -7,7 +7,7 @@
         <div class="col-span-3 py-4 overflow-auto" style="border-right: solid 1px var(--el-menu-border-color);">
           <router-view name="side" />
         </div>
-        <div class="col-span-9 p-4 overflow-auto">
+        <div class="col-span-9 p-6 overflow-auto">
           <router-view name="content" />
         </div>
       </div>
@@ -22,6 +22,10 @@ import BaseHeader from '../BaseHeader.vue';
 </script>
 
 <style lang="scss">
+body {
+  color: var(--el-menu-text-color);
+}
+
 .infinite-list-item {
   display: flex;
   background: var(--el-color-primary-light-9);

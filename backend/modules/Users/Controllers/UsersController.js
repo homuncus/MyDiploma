@@ -71,22 +71,21 @@ class UsersController {
     });
   }
 
-  async save({ request, response }) {
+  async save({ params, request, response }) {
     const { confirmPassword, ...input } = request.all();
 
     let user = {};
 
-    if (!input.id) {
+    if (!input.id && !params.id) {
       user = new User();
+      if (input.password !== confirmPassword) {
+        return response.status(400).json(Notify.error('Password confirmation failed'));
+      }
     } else {
-      user = await User.find(input.id);
+      user = await User.find(input.id || params.id);
       if (!user) {
         return response.notFound(Notify.error('User not found', {}));
       }
-    }
-
-    if (input.password !== confirmPassword) {
-      return response.status(400).json(Notify.error('Password confirmation failed'));
     }
 
     if (input.blocked && !user.deleted_at) {

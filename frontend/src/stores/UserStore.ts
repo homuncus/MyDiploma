@@ -14,6 +14,8 @@ export const useUserStore = defineStore('UserStore', {
         id: -1,
         email: '',
         username: '',
+        about: '',
+        pronouns: ''
       },
     }
   },
@@ -22,8 +24,10 @@ export const useUserStore = defineStore('UserStore', {
       const user = await axios.get(`${import.meta.env.VITE_API_URL}/users/${this.user.id}`)
       return user
     },
-    async update(): Promise<any> {
-      return await axios.patch(`${import.meta.env.VITE_API_URL}/users/${this.user.id}`, this.$state.user)
+    async updateToServer(): Promise<any> {
+      return await processAxios(async (axios) => {
+        return await axios.patch(`/users/${this.user.id}`, this.$state.user)
+      })
     },
     async checkToken() {
       if (!this.access_token.token) return false

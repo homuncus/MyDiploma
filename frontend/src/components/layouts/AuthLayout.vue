@@ -4,7 +4,7 @@
     <div class="login flex justify-center items-center">
       <el-card>
         <button class="w-full cursor-pointer text-xl mt-4" style="flex-basis: 0;" @click="toggleDark()">
-          <el-icon v-if="isDark" style="color:rgb(250 204 21)"><Sunny /></el-icon>
+          <el-icon v-if="isDark" style="color:rgb(250, 204, 21)"><Sunny /></el-icon>
           <el-icon v-else><Moon /></el-icon>
         </button>
         <router-view></router-view>

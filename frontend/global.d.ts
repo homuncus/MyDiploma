@@ -12,7 +12,8 @@ declare module 'nets-types' {
   export interface User {
     id: number,
     email: string,
-    username: string
+    username: string,
+    about: string
   }
 
   export interface Message {

@@ -15,12 +15,6 @@
     </el-sub-menu>
     <el-menu-item index="3" disabled>Info</el-menu-item>
     <el-menu-item index="4">Orders</el-menu-item>
-    <el-menu-item index="5" class="h-full" @click="toggleDark()">
-      <button class="border-none bg-transparent cursor-pointer">
-        <el-icon v-if="isDark" style="color:rgb(250 204 21); margin-right: 0;"><Sunny /></el-icon>
-        <el-icon v-else style="color:rgb(21, 25, 150); margin-right: 0;"><Moon /></el-icon>
-      </button>
-    </el-menu-item>
   </el-menu>
 </template>
 

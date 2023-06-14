@@ -12,6 +12,7 @@ import { useUserStore } from '@/stores';
 export default async function process(fn: (axiosObj: typeof axios, apiUrl: string) => any, successCb?: (msg: typeof ElMessage) => any, errorCb?: (msg: typeof ElMessage) => any) {
   axios.defaults.baseURL = import.meta.env.VITE_API_URL
   axios.defaults.headers['Authorization'] = useUserStore().token || ''
+  axios.defaults.timeout = 3000
   try {
     const res = await fn(axios, String(import.meta.env.VITE_API_URL));
     if (successCb)

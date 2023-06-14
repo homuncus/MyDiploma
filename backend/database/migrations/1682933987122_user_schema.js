@@ -10,6 +10,7 @@ class UserSchema extends Schema {
       table.string('username').unique().index().notNullable();
       table.string('email').unique();
       table.text('about').defaultTo('');
+      table.string('pronouns').defaultTo('-');
       table.string('password', 60).notNullable();
       table.boolean('blocked').defaultTo(false);
       table.json('data').nullable();
