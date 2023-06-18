@@ -6,6 +6,7 @@
   "list": "Users in workshops list",
 
   "user_id": "User",
+  "is_manager": "Is manager",
   "workshop_id": "Workshop",
   "created_at": "Created at",
   "updated_at": "Updated at"

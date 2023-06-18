@@ -10,6 +10,8 @@ const TableBuilder = use('ADM/TableBuilder');
 
 const Workshop = use('Workshops/Models/Workshop');
 const UserWorkshop = use('Workshops/Models/UserWorkshop');
+const Productions = use('Productions/Models/Production');
+const User = use('Users/Models/User')
 
 class WorkshopsController {
   async index({ view, auth, __ }) {
@@ -64,6 +66,7 @@ class WorkshopsController {
         'workshops.description',
         Database.raw('COUNT("users"."id") AS users_count'),
         Database.raw('COUNT("nettings"."id") AS nettings_count'),
+        Database.raw('CASE WHEN user_workshops.user_id IS NOT NULL THEN 1 ELSE 0 END AS is_user_member'),
         'workshops.created_at',
         'workshops.updated_at')
       .from('workshops')
@@ -72,8 +75,8 @@ class WorkshopsController {
       .leftJoin('productions', 'productions.workshop_id', 'workshops.id')
       .leftJoin('nettings', 'nettings.id', 'productions.netting_id')
       .where('workshops.confirmed', true)
-      .groupBy('workshops.id')
-      .orderBy('name', 'DESC')
+      .groupBy('workshops.id', 'user_workshops.user_id')
+      .orderByRaw('is_user_member DESC, name DESC')
       .offset(offset)
       .limit(limit);
     if (search) {
@@ -102,8 +105,8 @@ class WorkshopsController {
     });
   }
 
-  async save({ params, request, response }) {
-    const input = { ...request.all(), params };
+  async save({ params, request, response, auth }) {
+    const input = { ...request.all(), ...params };
 
     let workshop = {};
 
@@ -143,15 +146,19 @@ class WorkshopsController {
     return response.json(Notify.success('Saved', {}));
   }
 
-  async show({ params, response, auth }) {
+  async show({ params, request, response, auth }) {
     const { slug } = params;
     const authUser = await auth.authenticator('jwt').getUser();
 
-    const workshop = await Database
-      .select('workshops.*')
-      .select('users.*')
-      .select('productions.*')
-      .select('netting.*')
+    const workshop = await Workshop.query()
+      .select('*')
+      .with('users')
+      .with('productions', (builder) => {
+        builder.with('netting')
+          .with('chief')
+          .with('material')
+          .with('workshop');
+      })
       .select(Database.raw(
         `(SELECT COUNT(*) 
           FROM user_workshops 
@@ -160,29 +167,63 @@ class WorkshopsController {
         ) AS is_user_member`,
         [authUser.id]
       ))
-      .from('workshops')
-      .leftJoin('users', 'workshops.id', 'users.workshop_id')
-      .leftJoin('productions', 'workshops.id', 'productions.workshop_id')
-      .leftJoin('netting', 'productions.netting_id', 'netting.id')
-      .where('workshops.slug', slug);
+      .select(Database.raw(
+        `(SELECT COUNT(*) 
+          FROM user_workshops 
+          WHERE user_id = ? 
+          AND workshop_id = workshops.id
+          AND is_manager = true
+        ) AS is_user_manager`,
+        [authUser.id]
+      ))
+      .where('workshops.slug', slug)
+      .first();
 
     if (!workshop) {
       return response.notFound(Notify.error('Workshop not found', {}));
     }
 
-    return response.json(workshop);
+    workshop.is_user_member = !!parseInt(workshop.is_user_member, 10);
+    workshop.is_user_manager = !!parseInt(workshop.is_user_manager, 10);
+
+    return response.json(workshop.toJSON());
   }
 
-  async productions({ params, response }) {
+  async findBy({ params, request, response }) {
+    const { attr } = params;
+    const { value } = request.all();
+
+    const workshop = await Workshop.findBy(attr, value);
+
+    if (!workshop) {
+      return response.notFound(Notify.error('Workshop not found'));
+    }
+
+    return response.json(workshop.toJSON());
+  }
+
+  async productions({ params, request, response }) {
     const { id } = params;
+    const { completed } = request.all();
     const workshop = await Workshop.find(id);
 
     if (!workshop) {
       return response.notFound(Notify.error('Workshop not found', {}));
     }
 
-    const productions = await workshop.productions().fetch();
-    return response.json(productions.toJSON());
+    let productions = Productions.query()
+      .with('netting')
+      .with('chief')
+      .with('material')
+      .with('workshop')
+      .where('productions.workshop_id', id)
+      .orderBy('productions.created_at', 'ASC');
+
+    if (completed) {
+      productions = productions.andWhere('completed', true);
+    }
+
+    return response.json((await productions.fetch()).toJSON());
   }
 
   async delete({ request, response, params }) {

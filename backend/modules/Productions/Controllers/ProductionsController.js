@@ -116,7 +116,7 @@ class ProductionsController {
   async show({ params, response }) {
     const { id } = params;
     const production = await Production.query()
-      .with('netting')
+      .with('netting.type')
       .with('chief')
       .with('material')
       .with('workshop')

@@ -9,6 +9,34 @@ declare module 'nets-types' {
     updated_at: string
   }
 
+  export interface Netting {
+    id: number,
+    size: string,
+    color: string,
+    type: NettingType
+  }
+
+  export interface NettingType {
+    id: number,
+    name: string,
+    description: string
+  }
+
+  export interface Material {
+    id: number,
+    name: string,
+    description: string
+  }
+
+  export interface Production {
+    id: number,
+    netting: Netting,
+    chief: User,
+    material: Material,
+    workshop: Workshop,
+    competed: boolean,
+  }
+
   export interface User {
     id: number,
     email: string,
@@ -18,16 +46,16 @@ declare module 'nets-types' {
 
   export interface Message {
     id: number,
-    receiever: User,
-    sender: User,
+    direction: string,
     message: string,
-    read: boolean,
+    sender_username: string,
     created_at: string
   }
 
   export interface Chat {
     id: number,
-    interlocutor: User,
-    lastMessage: Message
+    username: string,
+    last_message: string,
+    last_message_date: string
   }
 }

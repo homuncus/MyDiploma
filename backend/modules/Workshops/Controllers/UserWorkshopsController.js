@@ -27,6 +27,7 @@ class UserWorkshopsController {
       { title: '#', width: '1%' },
       { title: __('Workshops.userWorkshops.user_id'), width: '' },
       { title: __('Workshops.userWorkshops.workshop_id'), width: '' },
+      { title: __('Workshops.userWorkshops.is_manager'), width: '' },
       { title: __('Workshops.userWorkshops.created_at'), width: '10%' },
       { title: __('Adm.admin.actions'), width: '1%' },
     ]);
@@ -44,8 +45,9 @@ class UserWorkshopsController {
   async list({ request, response }) {
     const query = Database
       .select('user_workshops.id',
-        'users.username',
-        'workshops.name',
+        'users.username as user_id',
+        'workshops.name as workshop_id',
+        'user_workshops.is_manager',
         'user_workshops.created_at')
       .from('user_workshops')
       .innerJoin('users', 'user_workshops.user_id', 'users.id')
@@ -53,6 +55,7 @@ class UserWorkshopsController {
 
     const table = new Datatables(query, request);
     const res = await table.make();
+
     return response.json(res);
   }
 

@@ -56,7 +56,7 @@ export default {
               if (!value) {
                 return callback(new Error('Username is required'))
               }
-              
+
               notExists('users', 'username', value, callback)
             },
             trigger: 'blur'
@@ -110,7 +110,7 @@ export default {
   methods: {
     async signup() {
       this.loading = true;
-      let valid = await this.$refs.form.validate();
+      let valid = await (this.$refs.form as any).validate();
       if (!valid) {
         this.loading = false;
         return;
@@ -118,11 +118,13 @@ export default {
 
       await processAxios(async (axios) => {
         await axios.post(`/auth/signup`, this.formData)
-      }, (msg) => {
-        msg.success('Account created successfully!');
-        this.$router.push({ name: 'login' });
-      },
-        (msg) => msg.error('Check the credentials and try again!')
+      }, {
+        successCb: (msg) => {
+          msg.success('Account created successfully!');
+          this.$router.push({ name: 'login' });
+        },
+        userErrorCb: (msg) => msg.error('Check the credentials and try again!')
+      }
       )
       this.loading = false;
     },

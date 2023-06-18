@@ -3,6 +3,7 @@
   <div v-else class="h-full">
     <Profile v-if="route.params.slug === 'profile'" />
     <Appearance v-if="route.params.slug === 'appearance'" />
+    <Account v-if="route.params.slug === 'account'" />
     <p v-else>Error: no such page</p>
   </div>
 </template>
@@ -11,6 +12,7 @@
 import { computed } from 'vue';
 import Profile from './ProfilePage.vue'
 import Appearance from './AppearancePage.vue'
+import Account from './AccountPage.vue'
 import { useRoute } from 'vue-router';
 
 const route = useRoute()

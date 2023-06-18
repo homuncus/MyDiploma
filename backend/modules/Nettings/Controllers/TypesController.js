@@ -76,8 +76,8 @@ class TypesController {
     });
   }
 
-  async save({ request, response }) {
-    const input = request.all();
+  async save({ params, request, response }) {
+    const input = { ...request.all(), ...params };
 
     let type = {};
 
@@ -86,7 +86,7 @@ class TypesController {
     } else {
       type = await Type.find(input.id);
       if (!type) {
-        return response.notFound().json(Notify.error('Netting type not found', {}));
+        return response.notFound(Notify.error('Netting type not found', {}));
       }
     }
 
@@ -104,7 +104,7 @@ class TypesController {
     const type = await Type.find(id);
 
     if (!type) {
-      return response.notFound().json(Notify.error('Netting type not found', {}));
+      return response.notFound(Notify.error('Netting type not found', {}));
     }
 
     return response.json(type.toJSON());
@@ -115,7 +115,7 @@ class TypesController {
     const type = await Type.find(id);
 
     if (!type) {
-      return response.notFound().json(Notify.error('Netting type not found', {}));
+      return response.notFound(Notify.error('Netting type not found', {}));
     }
 
     const nettings = await type.nettings().fetch();
@@ -127,7 +127,7 @@ class TypesController {
     const type = await Type.find(id);
 
     if (!type) {
-      return response.notFound().json(Notify.error('Something went wrong. type not found', {}));
+      return response.notFound(Notify.error('Something went wrong. type not found', {}));
     }
 
     if (await type.delete()) {

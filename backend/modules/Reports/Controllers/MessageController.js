@@ -15,7 +15,7 @@ class MessageController {
     if (!input.id && !id) {
       message = new Message();
       const authUser = await auth.authenticator('jwt').getUser();
-      message.receiever_id = userId;
+      message.receiver_id = userId;
       message.sender_id = authUser.id;
     } else {
       message = await Message.find(input.id || id);
@@ -31,6 +31,22 @@ class MessageController {
     }
 
     return response.json(Notify.success('Saved', {}));
+  }
+
+  async delete({ params, response }) {
+    const { id } = params;
+
+    const message = Message.find(id);
+
+    if (!message) {
+      return response.notFound(Notify.error('Message not found'));
+    }
+
+    if (!await message.delete()) {
+      return response.status(500).json(Notify.error('Couldnt delete the message'));
+    }
+
+    return response.json(Notify.success('Deleted'));
   }
 }
 

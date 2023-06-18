@@ -53,7 +53,7 @@ Route.group(() => {
 }).prefix('admin').middleware('adminPanelLocal');
 
 Route.group(() => {
-  Route.get('types', '@provider:Nettings/Controllers/TypesController.list');
+  Route.get('types', '@provider:Nettings/Controllers/TypesController.listAll');
   Route.post('types', '@provider:Nettings/Controllers/TypesController.save');
   Route.delete('types/:id', '@provider:Nettings/Controllers/TypesController.delete');
   Route.patch('types/:id', '@provider:Nettings/Controllers/TypesController.save');

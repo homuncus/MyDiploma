@@ -83,8 +83,10 @@ Route.group(() => {
   Route.post('connections/:id/accept', '@provider:Users/Controllers/UserConnectionsController.accept');
   Route.post('connections/:id/decline', '@provider:Users/Controllers/UserConnectionsController.decline');
   Route.get('findBy/:attr', '@provider:Users/Controllers/UsersController.findBy');
+  Route.get('chats', '@provider:Users/Controllers/UsersController.chats');
+  Route.get('messagesWith/:userId', '@provider:Users/Controllers/UsersController.messages');
 
-  Route.get('/', '@provider:Users/Controllers/UsersController.list');
+  Route.get('/', '@provider:Users/Controllers/UsersController.scrollList');
   Route.post('/', '@provider:Users/Controllers/UsersController.save');
   Route.get('/:id', '@provider:Users/Controllers/UsersController.show');
   Route.delete('/:id', '@provider:Users/Controllers/UsersController.delete').middleware('auth:jwt');
@@ -94,7 +96,4 @@ Route.group(() => {
 
   Route.get('/:id/productions', '@provider:Users/Controllers/UsersController.productions');
   Route.get('/:id/workshops', '@provider:Users/Controllers/UsersController.workshops');
-
-  Route.get('/:id/messages/:userId', '@provider:Users/Controllers/UsersController.messages');
-  Route.get('/:id/chats', '@provider:Users/Controllers/UsersController.chats');
 }).prefix('api/users');

@@ -31,4 +31,5 @@ Route.group(() => {
   Route.post(':userId', '@provider:Reports/Controllers/MessageController.save');
   Route.post(':messageId/report', '@provider:Reports/Controllers/ReportsController.save');
   Route.patch(':id', '@provider:Reports/Controllers/MessageController.save');
+  Route.delete(':id', '@provider:Reports/Controllers/MessageController.delete');
 }).prefix('api/messages').middleware('auth:jwt');

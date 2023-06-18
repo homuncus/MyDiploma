@@ -54,17 +54,19 @@ const form = ref<any>(null)
 const submit = async () => {
   loading.value = true
   let valid = form.value.validate();
-  if (!valid) { 
-    loading.value = false  
+  if (!valid) {
+    loading.value = false
     return
   }
   await processAxios(async (axios) => {
     await axios.patch(`/users/${user.id}`, formData)
-  }, (msg) => {
-    msg.success({ message: 'Successfully updated your info!' })
-    userStore.$patch({ user: formData })
-  },
-    (msg) => { msg.error({ message: 'Error. Check the data.' }) })
+  }, {
+    successCb: (msg) => {
+      msg.success({ message: 'Successfully updated your info!' })
+      userStore.$patch({ user: formData })
+    },
+    userErrorCb: (msg) => { msg.error({ message: 'Error. Check the data.' }) }
+  })
   loading.value = false
 }
 

@@ -2,6 +2,11 @@
   <el-form-item size="large">
     <el-input type="text" class="mx-4" @change="doSearch" :prefix-icon="Search" v-model="search" clearable placeholder="Search" />
   </el-form-item>
+  <el-form-item size="large">
+    <create-workshop-button>
+      <el-button type="success" plain :dark="isDark" class="mx-4" />
+    </create-workshop-button>
+  </el-form-item>
     <ul
       v-infinite-scroll="load"
       class="m-4"
@@ -25,6 +30,8 @@ import { RouterLink } from 'vue-router'
 import { type Workshop } from 'nets-types'
 import { Search } from '@element-plus/icons-vue'
 import processAxios from '@/services/AxiosProcessor';
+import CreateWorkshopButton from '@/components/CreateWorkshopButton.vue';
+import { isDark } from '@/composables';
 
 const workshops = ref<Workshop[]>([])
 const loading = ref(false)
@@ -43,6 +50,11 @@ const load = async () => {
     workshops.value = workshops.value.concat(fetched)
 
     if (fetched.length < limit) {
+      noMore.value = true
+    }
+  }, { 
+    serverErrorCb: (msg) => {
+      msg.error({ message: 'Server error, please try again later!' })
       noMore.value = true
     }
   })

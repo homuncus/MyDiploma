@@ -4,7 +4,8 @@
     <div class="flex flex-1">
       <base-side />
       <div class="w-full grid grid-cols-12">
-        <div class="col-span-3 py-4 overflow-auto" style="border-right: solid 1px var(--el-menu-border-color);">
+        <div class="col-span-3 py-4 overflow-hidden hover:overflow-auto"
+          style="border-right: solid 1px var(--el-menu-border-color);">
           <router-view name="side" />
         </div>
         <div class="col-span-9 p-6 overflow-auto">
@@ -36,6 +37,7 @@ body {
 .list-item {
   display: flex;
   border-bottom: 1px solid var(--el-menu-border-color);
+
   &:last-child {
     border-bottom: none;
   }

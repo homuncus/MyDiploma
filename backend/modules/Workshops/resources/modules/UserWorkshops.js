@@ -40,6 +40,7 @@ ADM.modules.set('userWorkshops', {
         { data: 'id', name: 'user_workshops.id' },
         { data: 'user_id', name: 'user_workshops.user_id', orderable: true, searchable: true },
         { data: 'workshop_id', name: 'user_workshops.workshop_id', orderable: true, searchable: true },
+        { data: 'is_manager', name: 'user_workshops.is_manager', orderable: true, searchable: true },
         {
           data: 'created_at', name: 'user_workshops.created_at', orderable: true, searchable: true,
           render: (data) => {
@@ -50,7 +51,6 @@ ADM.modules.set('userWorkshops', {
            class="text-muted"><span>${localTime.format('hh:mm A')}</span></div>`;
           },
         },
-
         {
           data: 'actions',
           name: 'actions',

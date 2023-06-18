@@ -80,7 +80,9 @@ export default {
 
         const redirect = { name: this.$router.currentRoute.value.query.redirect?.toString() }
         this.$router.push(redirect || { name: 'workshops' })
-      }, undefined, (msg) => msg.error('Check the e-mail or password and try again!'))
+      }, {
+        userErrorCb: (msg) => msg.error('Check the e-mail or password and try again!')
+      })
       this.loading = false;
     },
   },

@@ -52,6 +52,19 @@ class UsersController {
     return response.json(res);
   }
 
+  async scrollList({ request, response }) {
+    const { search } = request.all();
+    const limit = 8;
+    let usersQuery = Database
+      .select('users.id', 'users.username', 'users.email', 'users.created_at', 'users.updated_at')
+      .from('users')
+      .limit(limit);
+
+    if (search) usersQuery = usersQuery.whereRaw('username LIKE ?', `%${search.toLowerCase()}%`);
+
+    return response.json(await usersQuery);
+  }
+
   async edit({ response, params, __ }) {
     const { id } = params;
     const data = await User.find(id);
@@ -169,49 +182,21 @@ class UsersController {
   }
 
   async messages({ params, response, auth }) {
-    const { id, userId } = params;
+    const { userId } = params;
     const authUser = await auth.authenticator('jwt').getUser();
-    if (id !== authUser.id) return response.forbidden(Notify.error('No access'));
-    const user = await User.find(id);
 
-    const messages = await user.messagesWith(userId).fetch();
+    const messages = (await authUser.messagesWith(userId)).sort((a, b) => a < b);
 
-    return response.json(messages.toJSON());
+    return response.json(messages);
   }
 
-  async chats({ params, request, response, auth }) {
-    const { id } = params;
+  async chats({ request, response, auth }) {
     const { limit, offset, search } = request.all();
     const authUser = await auth.authenticator('jwt').getUser();
 
-    if (id !== authUser.id) return response.forbidden(Notify.error('No access'));
+    const conversations = await authUser.conversations();
 
-    const conversations = await Message.query()
-      .select('receiver_id', 'sender_id')
-      .select(Database.raw('MAX(id) AS last_message_id'))
-      .where('receiver_id', id)
-      .orWhere('sender_id', id)
-      .groupBy('receiver_id', 'sender_id')
-      .havingRaw('count(*) > 0')
-      .with('interlocutor', (builder) => {
-        builder.where('users.id', '!=', id);
-      })
-      .with('lastMessage', (builder) => {
-        builder.whereRaw('messages.id = last_message_id');
-      })
-      .fetch();
-
-    const chats = conversations.toJSON().map((conversation) => {
-      const { interlocutor, last_message: lastMessage } = conversation;
-      console.log(conversation);
-      return {
-        id: interlocutor.id,
-        interlocutor,
-        lastMessage,
-      };
-    });
-
-    return response.json(chats);
+    return response.json(conversations);
   }
 }
 
