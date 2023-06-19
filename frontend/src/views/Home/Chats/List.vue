@@ -13,10 +13,11 @@
           src="https://cdn.pixabay.com/photo/2018/09/12/12/14/man-3672010__340.jpg" :alt="chat.interlocutor.username" /> -->
         <div class="w-full pb-2">
           <div class="flex justify-between">
-            <span class="block ml-2 font-semibold text-gray-800 dark:text-neutral-200">{{ chat.username
-            }}</span>
-            <span class="block ml-2 text-sm font-thin text-gray-600 dark:text-neutral-400">{{
-              dayJs(chat.last_message_date).fromNow() }}</span>
+            <span class="block ml-2 font-semibold text-gray-800 dark:text-neutral-200">
+              {{ chat.username }}
+            </span>
+            <span class="block ml-2 text-sm font-thin text-gray-600 dark:text-neutral-400">
+              {{ dayJs(chat.last_message_date).fromNow() }}</span>
           </div>
           <span class="block ml-2 text-sm text-gray-500 dark:text-gray-400 truncate">{{ chat.last_message }}</span>
         </div>
@@ -35,7 +36,6 @@ import { useUserStore } from '@/stores';
 
 const router = useRouter()
 
-const userStore = useUserStore()
 const chats = ref<Chat[]>([])
 
 const loading = ref(false)

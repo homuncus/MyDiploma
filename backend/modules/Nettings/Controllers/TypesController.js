@@ -100,8 +100,8 @@ class TypesController {
   }
 
   async show({ response, params }) {
-    const { id } = params;
-    const type = await Type.find(id);
+    const { slug } = params;
+    const type = await Type.findBy('slug', slug);
 
     if (!type) {
       return response.notFound(Notify.error('Netting type not found', {}));

@@ -16,7 +16,7 @@ class Workshop extends Model {
   users() {
     return this.belongsToMany('Users/Models/User')
       .pivotModel('Workshops/Models/UserWorkshop')
-      .withPivot('created_at');
+      .withPivot(['is_manager', 'created_at']);
   }
 
   productions() {
@@ -25,6 +25,10 @@ class Workshop extends Model {
 
   nettings() {
     return this.hasMany('Nettings/Models/Netting');
+  }
+
+  materials() {
+    return this.hasMany('Materials/Models/Material');
   }
 }
 

@@ -2,10 +2,8 @@
   <el-form-item size="large">
     <el-input type="text" class="mx-4" @change="doSearch" :prefix-icon="Search" v-model="search" clearable placeholder="Search" />
   </el-form-item>
-  <el-form-item size="large">
-    <create-workshop-button>
-      <el-button type="success" plain :dark="isDark" class="mx-4" />
-    </create-workshop-button>
+  <el-form-item >
+    <create-workshop-button />
   </el-form-item>
     <ul
       v-infinite-scroll="load"
@@ -38,6 +36,8 @@ const loading = ref(false)
 const noMore = ref(false)
 const disabled = computed(() => loading.value || noMore.value)
 const search = ref('')
+
+const createWorkshopModalVisible = ref(false)
 
 const load = async () => {
   loading.value = true

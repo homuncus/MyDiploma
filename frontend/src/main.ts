@@ -1,4 +1,9 @@
-import ElementPlus from 'element-plus'
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+import { createPinia } from 'pinia'
+import piniaPluginPersistedState from "pinia-plugin-persistedstate"
+
 import './index.css'
 import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
@@ -7,11 +12,8 @@ import '@/styles/index.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import { createPinia } from 'pinia'
-import piniaPluginPersistedState from "pinia-plugin-persistedstate"
+import ElementPlus from 'element-plus'
+
 
 // declare module '@vue/runtime-core' {
 //   interface ComponentCustomProperties {

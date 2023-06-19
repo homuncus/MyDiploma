@@ -100,8 +100,28 @@ class NettingsController {
       return response.json(Notify.error('Not updated', {}));
     }
 
-    return response.json(Notify.success('Saved', {}));
+    return response.json({ msg: Notify.success('Saved', {}), id: netting.id });
   }
+
+  // async saveOrIncrement({ request, response }) {
+  //   const input = request.all();
+
+  //   const netting = await Netting.findOrCreate(input, input);
+
+  //   netting.
+  // }
+
+  // async saveUser({ request, response }) {
+  //   const input = request.all();
+
+  //   const netting = await Netting.create(input);
+
+  //   if (!netting) {
+  //     return response.status(500).json(Notify.error('Not saved', {}));
+  //   }
+
+  //   return response.json(Notify.success('Saved', {}));
+  // }
 
   async show({ response, params }) {
     const { id } = params;

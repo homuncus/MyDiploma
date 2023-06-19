@@ -13,7 +13,7 @@
         <li v-for="message in chatMessages" :key="message.id"
           :class="['flex', 'items-center', { 'justify-start': !isSenderOf(message) }, { 'justify-end': isSenderOf(message) }]">
           <div
-            :class="['relative', 'max-w-xl', 'px-4', 'py-2', 'text-gray-700', 'rounded', 'shadow', { 'bg-gray-100': isSenderOf(message) }]">
+            :class="['relative', 'max-w-xl', 'px-4', 'py-2', 'text-gray-700', 'dark:text-zinc-200', 'rounded', 'shadow', { 'bg-blue-300 dark:bg-sky-900': isSenderOf(message) }, { 'bg-gray-100 dark:bg-gray-800': !isSenderOf(message) }]">
             <span class="block">{{ message.message }}</span>
             
           </div>
@@ -62,7 +62,7 @@ import { useRoute } from 'vue-router';
 import { useUserStore } from '@/stores';
 import { type Message } from 'nets-types'
 import profanity from 'leo-profanity'
-import { Flag } from '@element-plus/icons-vue'
+// import { Flag } from '@element-plus/icons-vue'
 
 const route = useRoute()
 const { user } = useUserStore()
@@ -112,11 +112,11 @@ const isSenderOf = (message: Message): boolean => {
   return message.sender_username == user.username
 }
 
-const showEmojis = ref(false)
+// const showEmojis = ref(false)
 
-const onEmojiSelect = (emoji: any) => {
-  message.value += emoji.i
-}
+// const onEmojiSelect = (emoji: any) => {
+//   message.value += emoji.i
+// }
 
 onMounted(async () => {
   if (route.params.slug) await getChatMessages()

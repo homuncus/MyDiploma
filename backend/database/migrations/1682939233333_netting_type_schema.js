@@ -8,6 +8,7 @@ class NettingTypeSchema extends Schema {
     this.create('netting_types', (table) => {
       table.increments();
       table.string('name').notNullable();
+      table.string('slug').notNullable();
       table.text('description');
       table.timestamps();
     });

@@ -60,4 +60,5 @@ Route.group(() => {
   Route.delete('/:id', '@provider:Workshops/Controllers/WorkshopsController.delete');
   Route.patch('/:id', '@provider:Workshops/Controllers/WorkshopsController.save');
   Route.get('/:id/productions', '@provider:Workshops/Controllers/WorkshopsController.productions');
+  Route.get('/:id/materials', '@provider:Workshops/Controllers/WorkshopsController.materials');
 }).prefix('api/workshops').middleware('auth:jwt');
