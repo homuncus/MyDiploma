@@ -13,19 +13,25 @@ declare module 'nets-types' {
     id: number,
     size: string,
     color: string,
-    type: NettingType
+    type: {
+      id: number,
+      name: string,
+      slug: string
+    }
   }
 
   export interface NettingType {
     id: number,
     name: string,
+    slug: string,
     description: string
   }
 
   export interface Material {
     id: number,
     name: string,
-    description: string
+    description: string,
+    quantity: number
   }
 
   export interface Production {
@@ -41,7 +47,8 @@ declare module 'nets-types' {
     id: number,
     email: string,
     username: string,
-    about: string
+    about: string,
+    pivot?: any
   }
 
   export interface Message {

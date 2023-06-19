@@ -8,7 +8,8 @@ class Netting extends Model {
   }
 
   type() {
-    return this.belongsTo('Nettings/Models/Type');
+    return this.belongsTo('Nettings/Models/Type')
+      .select('netting_types.id', 'netting_types.name', 'netting_types.slug');
   }
 }
 

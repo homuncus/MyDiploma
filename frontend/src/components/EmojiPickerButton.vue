@@ -20,7 +20,7 @@ import { ref, defineModel } from 'vue'
 import data from "emoji-mart-vue-fast/data/all.json";
 import "emoji-mart-vue-fast/css/emoji-mart.css";
 
-import { Picker, EmojiIndex } from "emoji-mart-vue-fast";
+import { Picker, EmojiIndex } from "emoji-mart-vue-fast/src";
 
 let emojiIndex = new EmojiIndex(data);
 

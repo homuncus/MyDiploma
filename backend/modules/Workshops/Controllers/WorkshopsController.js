@@ -11,6 +11,7 @@ const TableBuilder = use('ADM/TableBuilder');
 const Workshop = use('Workshops/Models/Workshop');
 const UserWorkshop = use('Workshops/Models/UserWorkshop');
 const Productions = use('Productions/Models/Production');
+const Materials = use('Materials/Models/Material');
 const User = use('Users/Models/User')
 
 class WorkshopsController {
@@ -77,6 +78,7 @@ class WorkshopsController {
       .where('workshops.confirmed', true)
       .groupBy('workshops.id', 'user_workshops.user_id')
       .orderByRaw('is_user_member DESC, name DESC')
+      .distinctOn('workshops.name', 'is_user_member')
       .offset(offset)
       .limit(limit);
     if (search) {
@@ -153,8 +155,9 @@ class WorkshopsController {
     const workshop = await Workshop.query()
       .select('*')
       .with('users')
+      .with('materials')
       .with('productions', (builder) => {
-        builder.with('netting')
+        builder.with('netting.type')
           .with('chief')
           .with('material')
           .with('workshop');
@@ -212,18 +215,33 @@ class WorkshopsController {
     }
 
     let productions = Productions.query()
-      .with('netting')
+      .with('netting.type')
       .with('chief')
       .with('material')
       .with('workshop')
       .where('productions.workshop_id', id)
       .orderBy('productions.created_at', 'ASC');
 
-    if (completed) {
-      productions = productions.andWhere('completed', true);
+    if (completed !== undefined) {
+      productions = productions.andWhere('completed', completed);
     }
 
     return response.json((await productions.fetch()).toJSON());
+  }
+
+  async materials({ params, response }) {
+    const { id } = params;
+    const workshop = await Workshop.find(id);
+
+    if (!workshop) {
+      return response.notFound(Notify.error('Workshop not found', {}));
+    }
+
+    const materials = await workshop.materials()
+      .orderBy('materials.created_at', 'ASC')
+      .fetch();
+
+    return response.json(materials.toJSON());
   }
 
   async delete({ request, response, params }) {

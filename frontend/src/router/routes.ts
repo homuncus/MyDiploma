@@ -38,7 +38,10 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: 'tasks',
-        component: () => import('../views/Home/TasksPage.vue'),
+        components: {
+          side: () => import('../views/Home/Tasks/List.vue'),
+          content: () => import('../views/Home/Tasks/Task.vue')
+        },
         name: 'tasks',
         meta: {
           activeIndex: 3
@@ -66,7 +69,7 @@ const routes: RouteRecordRaw[] = [
         props: { side: true, content: true }
       },
       {
-        path: 'guide',
+        path: 'guide/:slug?',
         components: {
           side: () => import('../views/Home/Guide/List.vue'),
           content: () => import('../views/Home/Guide/Guide.vue')

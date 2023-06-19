@@ -35,5 +35,5 @@ Route.group(() => {
   Route.delete('/:id', '@provider:Productions/Controllers/ProductionsController.delete');
   Route.patch('/:id', '@provider:Productions/Controllers/ProductionsController.save');
   Route.get('/:id', '@provider:Productions/Controllers/ProductionsController.show');
-  Route.get('/:id/users', '@provider:Productions/Controllers/ProductionsController.save');
+  Route.get('/:id/users', '@provider:Productions/Controllers/ProductionsController.users');
 }).prefix('api/productions').middleware('auth:jwt');

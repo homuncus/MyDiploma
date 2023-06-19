@@ -56,7 +56,6 @@ import { useRoute } from 'vue-router'
 import {
   House,
   Document,
-  Menu as IconMenu,
   Setting,
   ChatSquare as Chat
 } from "@element-plus/icons-vue";

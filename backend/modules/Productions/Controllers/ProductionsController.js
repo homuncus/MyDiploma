@@ -90,13 +90,15 @@ class ProductionsController {
     });
   }
 
-  async save({ request, response }) {
+  async save({ request, response, auth }) {
     const input = request.all();
+    const authUser = await auth.authenticator('jwt').getUser();
 
     let production = {};
 
     if (!input.id) {
       production = new Production();
+      production.user_id = authUser.id;
     } else {
       production = await Production.find(input.id);
       if (!production) {

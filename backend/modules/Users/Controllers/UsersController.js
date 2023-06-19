@@ -166,18 +166,24 @@ class UsersController {
     return response.json(friends);
   }
 
-  async productions({ params, response }) {
-    const { id } = params;
-    const user = await User.find(id);
+  async productions({ params, request, response, auth }) {
+    const { completed } = request.all();
+    const authUser = await auth.authenticator('jwt').getUser();
 
-    if (!user) {
-      return response.notFound(Notify.error('Something went wrong. user not found', {}));
+    let productions = {};
+
+    if (completed === undefined) {
+      productions = {
+        chief: await authUser.productions().whereChief().fetch(),
+        member: await authUser.productions().whereMember().fetch()
+      };
+    } else {
+      productions = {
+        chief: await authUser.productions().whereChief().where('completed', completed).fetch(),
+        member: await authUser.productions().whereMember().where('completed', completed).fetch()
+      };
     }
 
-    const productions = {
-      chief: await user.productions().whereChief().fetch(),
-      member: await user.productions().whereMember().fetch()
-    };
     return response.json(productions);
   }
 

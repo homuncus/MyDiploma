@@ -35,7 +35,7 @@
 
 <script lang="ts" setup>
 import { isDark } from '@/composables';
-import { processAxios, itemExistsExcept as notExistsExcept } from '@/services';
+import { processAxios } from '@/services';
 import { useUserStore } from '@/stores';
 import { ref, reactive } from 'vue';
 

@@ -79,7 +79,7 @@ export default {
         // })
 
         const redirect = { name: this.$router.currentRoute.value.query.redirect?.toString() }
-        this.$router.push(redirect || { name: 'workshops' })
+        await this.$router.push(redirect || { name: 'workshops' })
       }, {
         userErrorCb: (msg) => msg.error('Check the e-mail or password and try again!')
       })

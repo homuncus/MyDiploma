@@ -114,6 +114,38 @@ class UserWorkshopsController {
     }
     return true;
   }
+
+  async saveWorkshopMember({ auth, params, response }) {
+    const { id } = params;
+    const authUser = await auth.authenticator('jwt').getUser();
+
+    const membership = await UserWorkshop.create({
+      workshop_id: id,
+      user_id: authUser.id
+    });
+
+    if (!membership) {
+      return response.status(500).json(Notify.error('Not saved', {}));
+    }
+
+    return response.json(Notify.success('Saved', {}));
+  }
+
+  async deleteWorkshopMember({ auth, params, response }) {
+    const { id } = params;
+    const authUser = await auth.authenticator('jwt').getUser();
+
+    const deleted = await UserWorkshop.query()
+      .where('workshop_id', id)
+      .andWhere('user_id', authUser.id)
+      .delete();
+
+    if (!deleted) {
+      return response.notFound(Notify.error('Membership not found', {}));
+    }
+
+    return response.json(Notify.success('Deleted', {}));
+  }
 }
 
 module.exports = UserWorkshopsController;

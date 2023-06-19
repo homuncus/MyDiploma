@@ -55,9 +55,9 @@ Route.group(() => {
 Route.group(() => {
   Route.get('types', '@provider:Nettings/Controllers/TypesController.listAll');
   Route.post('types', '@provider:Nettings/Controllers/TypesController.save');
-  Route.delete('types/:id', '@provider:Nettings/Controllers/TypesController.delete');
-  Route.patch('types/:id', '@provider:Nettings/Controllers/TypesController.save');
-  Route.get('types/:id', '@provider:Nettings/Controllers/TypesController.show');
+  // Route.delete('types/:id', '@provider:Nettings/Controllers/TypesController.delete');
+  // Route.patch('types/:id', '@provider:Nettings/Controllers/TypesController.save');
+  Route.get('types/:slug', '@provider:Nettings/Controllers/TypesController.show');
   Route.get('types/:id/nettings', '@provider:Nettings/Controllers/TypesController.nettings');
 
   Route.get('/', '@provider:Nettings/Controllers/NettingsController.list');
