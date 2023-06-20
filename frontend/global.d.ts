@@ -17,7 +17,7 @@ declare module 'nets-types' {
       id: number,
       name: string,
       slug: string
-    }
+    },
   }
 
   export interface NettingType {
@@ -41,6 +41,7 @@ declare module 'nets-types' {
     material: Material,
     workshop: Workshop,
     competed: boolean,
+    due_date: string
   }
 
   export interface User {

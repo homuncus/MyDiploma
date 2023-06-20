@@ -11,10 +11,13 @@
               <div class="text-sm text-gray-500 truncate dark:text-gray-400">
                 Chief: <router-link :to="{ name: 'user', params: { username: production.chief.username } }">{{ production.chief.username }}</router-link>
               </div>
-              <div class="text-sm text-gray-500 truncate dark:text-gray-400">
+              <div class="flex text-sm text-gray-500 dark:text-gray-400 gap-2">
                 Status:
                 <Badge color="blue" v-if="!production.competed">In progress</Badge>
                 <Badge color="green" v-else>Done</Badge>
+
+                <Badge color="red" v-if="dayJs(production.due_date).diff(Date.now(), 'days') < 0">Past due {{ dayJs(production.due_date).fromNow() }}</Badge>
+                <Badge color="orange" v-else-if="dayJs(production.due_date).diff(Date.now(), 'days') <= 3">Urgent</Badge>
               </div>
             </div>
             <div class="flex-1 min-w-0">
@@ -44,6 +47,7 @@
 <script lang="ts" setup>
 import { type Production } from 'nets-types'
 import Badge from '@/components/Badge.vue'
+import { dayJs } from '@/services';
 
 const props = defineProps({
   productions: {

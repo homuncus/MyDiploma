@@ -1,10 +1,11 @@
 'use strict';
 
 const Workshop = use('Workshops/Models/Workshop');
+const UserWorkshop = use('Workshops/Models/UserWorkshop');
 
 class WorkshopSeeder {
   async run() {
-    await Workshop.findOrCreate(
+    const { id: workshop_id } = await Workshop.findOrCreate(
       {
         slug: 'hpfk-nu-lp'
       },
@@ -13,6 +14,17 @@ class WorkshopSeeder {
         slug: 'hpfk-nu-lp',
         address: 'м. Хмельницький, вул. Зарічанська 10',
         description: 'Хмельницький політехнічний колеж'
+      }
+    );
+
+    await UserWorkshop.findOrCreate(
+      {
+        id: 1
+      },
+      {
+        user_id: 1,
+        workshop_id,
+        is_manager: true
       }
     );
   }

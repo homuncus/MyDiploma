@@ -26,6 +26,9 @@
             :value="material.id" />
         </el-select>
       </el-form-item>
+      <el-form-item label="Due" prop="due_date">
+        <el-date-picker v-model="formData.due_date"></el-date-picker>
+      </el-form-item>
       <p class="note">note</p>
     </el-form>
     <template #footer>
@@ -64,6 +67,7 @@ const formData = reactive({
   color: '',
   type_id: 0,
   material_id: 0,
+  due_date: ''
 })
 
 const form = ref<any>()
@@ -121,6 +125,13 @@ const validationRules = {
     {
       required: true,
       message: "Color is required",
+      trigger: "blur"
+    },
+  ],
+  due_date: [
+    {
+      required: true,
+      message: "End date is required",
       trigger: "blur"
     },
   ],

@@ -19,6 +19,7 @@ class ProductionSchema extends Schema {
       table.integer('netting_id').unsigned().references('id').inTable('nettings')
         .onDelete('cascade')
         .onUpdate('cascade');
+      table.timestamp('due_date').notNullable();
       table.boolean('completed').defaultTo(false);
       table.timestamps();
     });
