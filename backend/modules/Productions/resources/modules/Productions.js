@@ -44,9 +44,6 @@ ADM.modules.set('productions', {
         { data: 'responsible_user_name', name: 'productions.user_id', orderable: true, searchable: true },
         {
           data: 'completed', name: 'productions.completed', orderable: true, searchable: true,
-          render: () => {
-
-          }
         },
         {
           data: 'created_at', name: 'productions.created_at', orderable: true, searchable: false,

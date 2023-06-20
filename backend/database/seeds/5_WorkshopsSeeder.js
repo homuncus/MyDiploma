@@ -13,7 +13,8 @@ class WorkshopSeeder {
         name: 'ХПФК НУ "ЛП"',
         slug: 'hpfk-nu-lp',
         address: 'м. Хмельницький, вул. Зарічанська 10',
-        description: 'Хмельницький політехнічний колеж'
+        description: 'Хмельницький політехнічний колеж',
+        confirmed: true
       }
     );
 

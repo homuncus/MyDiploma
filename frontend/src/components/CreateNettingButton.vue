@@ -27,13 +27,13 @@
         </el-select>
       </el-form-item>
       <el-form-item label="Due" prop="due_date">
-        <el-date-picker v-model="formData.due_date"></el-date-picker>
+        <el-date-picker type="datetime" v-model="formData.due_date"></el-date-picker>
       </el-form-item>
       <p class="note">note</p>
     </el-form>
     <template #footer>
-      <el-button type="danger" @click="dialogFormVisible = false">Cancel</el-button>
-      <el-button v-loading="loading" type="primary" @click="submit">
+      <el-button type="danger" @click="closeDialog">Cancel</el-button>
+      <el-button :loading="loading" type="primary" @click="submit">
         Confirm
       </el-button>
     </template>
@@ -87,7 +87,8 @@ const submit = async () => {
     await axios.post('/productions', {
       material_id: formData.material_id,
       netting_id: nettingId,
-      workshop_id: props.workshopId
+      workshop_id: props.workshopId,
+      due_date: formData.due_date
     })
   }, {
     successCb: (msg) => {
@@ -98,8 +99,8 @@ const submit = async () => {
     }
   })
   loading.value = false
-  if (props.onSubmit) props.onSubmit()
-  dialogFormVisible.value = false
+  if (props.onSubmit) await props.onSubmit()
+  closeDialog()
 }
 
 const showDialog = async () => {
@@ -111,6 +112,11 @@ const showDialog = async () => {
   })
 
   dialogFormVisible.value = true
+}
+
+const closeDialog = async () => {
+  dialogFormVisible.value = false
+  form.value.resetFields()
 }
 
 const validationRules = {

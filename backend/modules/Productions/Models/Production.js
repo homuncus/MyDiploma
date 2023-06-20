@@ -11,6 +11,11 @@ class Production extends Model {
     return this.belongsTo('Users/Models/User');
   }
 
+  users() {
+    return this.belongsToMany('Users/Models/User')
+      .pivotModel('Productions/Models/UserProduction');
+  }
+
   material() {
     return this.belongsTo('Materials/Models/Material');
   }

@@ -29,17 +29,6 @@ module.exports = [
         "li.class": "menu-item",
         "li.aria-haspopup": "true",
         "a.class": "menu-link",
-        "text": "\n    <i class=\"menu-bullet menu-bullet-dot\"><span></span></i>\n    <span class=\"menu-text\">{{Users.roles.roles}}</span>\n  ",
-        "a.href": "Users.roles.index",
-        "permissions": [
-          "roles_view"
-        ],
-        "children": []
-      },
-      {
-        "li.class": "menu-item",
-        "li.aria-haspopup": "true",
-        "a.class": "menu-link",
         "text": "\n    <i class=\"menu-bullet menu-bullet-dot\"><span></span></i>\n    <span class=\"menu-text\">{{Users.userConnections.userConnections}}</span>\n  ",
         "a.href": "Users.userConnections.index",
         "permissions": [

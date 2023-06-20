@@ -204,6 +204,7 @@ class UsersController {
 
     return response.json(conversations);
   }
+
 }
 
 module.exports = UsersController;

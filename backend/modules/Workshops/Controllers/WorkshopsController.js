@@ -160,7 +160,8 @@ class WorkshopsController {
         builder.with('netting.type')
           .with('chief')
           .with('material')
-          .with('workshop');
+          .with('workshop')
+          .with('users');
       })
       .select(Database.raw(
         `(SELECT COUNT(*) 
