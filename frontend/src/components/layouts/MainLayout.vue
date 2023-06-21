@@ -8,7 +8,7 @@
           style="border-right: solid 1px var(--el-menu-border-color);">
           <router-view name="side" />
         </div>
-        <div class="col-span-9 p-6 overflow-auto">
+        <div class="col-span-9 p-6 overflow-auto max-h-min">
           <router-view name="content" />
         </div>
       </div>

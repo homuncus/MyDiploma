@@ -36,7 +36,7 @@
       </ul>
     </div>
   </div>
-  {{ users }}
+  <!-- {{ users }} -->
 </template>
 
 <script lang="ts" setup>

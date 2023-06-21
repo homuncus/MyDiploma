@@ -11,13 +11,19 @@
       :infinite-scroll-disabled="disabled"
       v-loading="loading"
       element-loading-text="Loading...">
-      <li v-for="workshop in workshops" :key="workshop.id" class="infinite-list-item p-2">
-        <div class="m-4">
-          <router-link :to="{ name: 'workshops', params: { slug: workshop.slug } }" class="text-lg">
-            {{ workshop.name }}
-          </router-link>
-
-        </div>
+      <li v-for="workshop in workshops" :key="workshop.id">
+        <router-link :to="{ name: 'workshops', params: { slug: workshop.slug } }" 
+        class="flex items-center px-3 py-2 text-lg transition duration-150 ease-in-out border-b dark:border-neutral-600 cursor-pointer hover:bg-blue-200 dark:hover:bg-zinc-800 focus:outline-none">
+          <div class="w-full pb-2">
+            <div class="flex justify-between">
+              <span class="block ml-2 font-semibold text-gray-800 dark:text-neutral-200">
+                {{ workshop.name }}
+              </span>
+            </div>
+            <span class="block ml-2 text-sm text-gray-500 dark:text-gray-400 truncate">Members: {{
+              workshop.users_count }}</span>
+          </div>
+        </router-link>
       </li>
     </ul>
 </template>

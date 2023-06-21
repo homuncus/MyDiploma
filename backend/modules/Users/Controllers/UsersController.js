@@ -177,11 +177,13 @@ class UsersController {
       .with('material')
       .with('workshop')
       .with('users')
-      .where('user_id', authUser.id)
-      .orWhere((query) => {
-        query.whereHas('users', (builder) => {
-          builder.where('user_id', authUser.id);
-        });
+      .where((query) => {
+        query.where('user_id', authUser.id)
+          .orWhere((innerQuery) => {
+            innerQuery.whereHas('users', (builder) => {
+              builder.where('user_id', authUser.id);
+            });
+          });
       })
       .orderBy('created_at', 'asc');
 

@@ -1,26 +1,45 @@
 <template>
   <el-empty description="Select a task" v-if="!route.params.id"></el-empty>
   <div v-else v-loading="loading" class="text-lg">
-    <div>
-      <div class="text-2xl mb-3 font-bold">ToDo: {{ task?.netting.type.name }}</div>
-      <div class="text-lg text-neutral-200 dark:text-zinc-800 pb-3 border-b" :title="dayJs(task?.due_date).fromNow()">Due:
-        {{ dayJs(task?.due_date).format('MMMM D, YYYY') }}</div>
+    <div class="border-b">
+      <div class="text-2xl mb-3 font-bold">To-do: {{ task?.netting.type.name }}</div>
     </div>
     <div>
-      <p class="text-xl italic">Netting:</p>
-      <p>Color: {{ task?.netting.color }}</p>
-      <p>Size: {{ task?.netting.size }}</p>
-      <p>Where:
-        <router-link :to="{ name: 'workshops', params: { slug: task?.workshop.slug } }">
-          {{ task?.workshop.name }}
-        </router-link>
-      </p>
-      <div class="flex-1 min-w-0 text-sm">
+      <div class="flex gap-2 min-w-0 text-md font-bold">
         Chief:
         <div class="font-medium text-gray-900 truncate dark:text-white">
-          <router-link :to="{ name: 'user', params: { username: task?.chief.username } }">
+          <router-link v-if="task" :to="{ name: 'user', params: { username: task?.chief.username } }">
             {{ task?.chief.username }}
           </router-link>
+        </div>
+      </div>
+      <p class="text-4xl italic text-center">Netting</p>
+      <div class="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-10">
+        <div class="grid grid-cols-3 row-gap-8 lg:grid-cols-5">
+          <div class="text-center">
+            <p class="font-bold">Color</p>
+            <h6 class="text-3xl font-bold text-deep-purple-accent-400">{{ task?.netting.color }}</h6>
+          </div>
+          <div class="text-center">
+            <p class="font-bold">Size</p>
+            <h6 class="text-3xl font-bold text-deep-purple-accent-400">{{ task?.netting.size }}</h6>
+          </div>
+          <div class="text-center">
+            <p class="font-bold">Material</p>
+            <h6 class="text-3xl font-bold text-deep-purple-accent-400">{{ task?.material.name }}</h6>
+          </div>
+          <div class="text-center">
+            <p class="font-bold">Due</p>
+            <h6 class="text-3xl font-bold text-deep-purple-accent-400">{{ dayJs(task?.due_date).format('MMMM D, YYYY') }}</h6>
+          </div>
+          <div class="text-center">
+            <p class="font-bold">Workshop</p>
+            <h6 class="text-3xl font-bold text-deep-purple-accent-400">
+              <router-link :to="{ name: 'workshops', params: { slug: task?.workshop.slug } }">
+                {{ task?.workshop.name }}
+              </router-link>
+            </h6>
+          </div>
         </div>
       </div>
     </div>

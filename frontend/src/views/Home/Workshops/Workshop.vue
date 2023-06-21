@@ -1,7 +1,7 @@
 <template>
   <div></div>
   <el-empty v-if="!show || !workshop" description="Select a workshop" />
-  <div v-else v-loading="loading" class="h-full">
+  <div v-else v-loading="loading" class="h-max">
     <div class="mb-6">
       <p class="text-5xl font-bold text-blue-800 dark:text-white">{{ workshop.name }}</p>
       <p class="text-slate-800 dark:text-slate-400">
@@ -38,7 +38,7 @@
         </el-tab-pane>
         <el-tab-pane lazy label="Nettings" name="nettings">
           <el-form-item v-if="workshop.is_user_manager">
-            <create-netting-button @onSubmit="getWorkshop" :workshopId="workshop.id" />
+            <create-netting-button :on-submit="getWorkshop" :workshopId="workshop.id" />
           </el-form-item>
           <workshop-nettings :productions="workshop.productions" />
         </el-tab-pane>
@@ -47,16 +47,16 @@
         </el-tab-pane>
         <el-tab-pane lazy label="Materials" name="materials" v-if="workshop.is_user_manager">
           <el-form-item>
-            <create-material-button @onSubmit="getWorkshop" :workshopId="workshop.id" />
+            <create-material-button :on-submit="getWorkshop" :workshop-id="workshop.id" />
           </el-form-item>
-          <workshop-materials :materials="workshop.materials" />
+          <workshop-materials :materials="workshop.materials" :on-material-change="getWorkshop" />
         </el-tab-pane>
         <el-tab-pane lazy label="Users" name="users">
           <workshop-users :users="workshop.users" />
         </el-tab-pane>
       </el-tabs>
     </div>
-    {{ workshop }}
+    <!-- {{ workshop }} -->
   </div>
 </template>
 

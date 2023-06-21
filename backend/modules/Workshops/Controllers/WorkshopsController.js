@@ -155,13 +155,16 @@ class WorkshopsController {
     const workshop = await Workshop.query()
       .select('*')
       .with('users')
-      .with('materials')
+      .with('materials', (builder) => {
+        builder.orderBy('created_at');
+      })
       .with('productions', (builder) => {
         builder.with('netting.type')
           .with('chief')
           .with('material')
           .with('workshop')
-          .with('users');
+          .with('users')
+          .orderBy('due_date');
       })
       .select(Database.raw(
         `(SELECT COUNT(*) 

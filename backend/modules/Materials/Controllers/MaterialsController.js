@@ -78,8 +78,8 @@ class MaterialsController {
     });
   }
 
-  async save({ request, response }) {
-    const input = request.all();
+  async save({ params, request, response }) {
+    const input = { ...request.all(), ...params };
 
     let material = {};
 
@@ -88,14 +88,14 @@ class MaterialsController {
     } else {
       material = await Material.find(input.id);
       if (!material) {
-        return response.json(Notify.error('Material not found', {}));
+        return response.notFound(Notify.error('Material not found', {}));
       }
     }
 
     material.merge(input);
 
     if (!await material.save()) {
-      return response.json(Notify.error('Not updated', {}));
+      return response.status(500).json(Notify.error('Not updated', {}));
     }
 
     return response.json(Notify.success('Saved', {}));

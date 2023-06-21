@@ -83,8 +83,8 @@
       </ul>
     </div>
   </div>
-
-  {{ productions }}
+  <el-empty class="text-center font-bold" v-if="props.productions.length === 0" description="No data" />
+  <!-- {{ productions }} -->
 </template>
 
 <script lang="ts" setup>
