@@ -90,8 +90,8 @@ class ProductionsController {
     });
   }
 
-  async save({ request, response, auth }) {
-    const input = request.all();
+  async save({ params, request, response, auth }) {
+    const input = { ...request.all(), ...params };
     const authUser = await auth.authenticator('jwt').getUser();
 
     let production = {};

@@ -21,7 +21,7 @@ class Production extends Model {
   }
 
   workshop() {
-    return this.belongsTo('Productions/Models/Production');
+    return this.belongsTo('Workshops/Models/Workshop');
   }
 
   netting() {

@@ -37,7 +37,7 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
-        path: 'tasks',
+        path: 'tasks/:id?',
         components: {
           side: () => import('../views/Home/Tasks/List.vue'),
           content: () => import('../views/Home/Tasks/Task.vue')
