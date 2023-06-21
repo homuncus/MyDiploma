@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen flex flex-col">
+  <div class="min-h-screen max-h-screen flex flex-col">
     <base-header />
-    <div class="flex flex-1">
+    <div class="flex flex-1" style="max-height: calc(100vh - 59px);">
       <base-side />
       <div class="w-full grid grid-cols-12">
         <div class="col-span-3 py-4 overflow-hidden hover:overflow-auto"

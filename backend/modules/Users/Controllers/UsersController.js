@@ -9,6 +9,7 @@ const TableBuilder = use('ADM/TableBuilder');
 // const { validate } = use('Validator');
 
 const User = use('Users/Models/User');
+const Production = use('Productions/Models/Production');
 const Message = use('Reports/Models/Message');
 
 class UsersController {
@@ -170,21 +171,25 @@ class UsersController {
     const { completed } = request.all();
     const authUser = await auth.authenticator('jwt').getUser();
 
-    let productions = {};
+    let productions = Production.query()
+      .with('netting.type')
+      .with('chief')
+      .with('material')
+      .with('workshop')
+      .with('users')
+      .where('user_id', authUser.id)
+      .orWhere((query) => {
+        query.whereHas('users', (builder) => {
+          builder.where('user_id', authUser.id);
+        });
+      })
+      .orderBy('created_at', 'asc');
 
-    if (completed === undefined) {
-      productions = {
-        chief: await authUser.productions().whereChief().fetch(),
-        member: await authUser.productions().whereMember().fetch()
-      };
-    } else {
-      productions = {
-        chief: await authUser.productions().whereChief().where('completed', completed).fetch(),
-        member: await authUser.productions().whereMember().where('completed', completed).fetch()
-      };
+    if (completed !== undefined) {
+      productions = productions.andWhere('completed', completed);
     }
 
-    return response.json(productions);
+    return response.json((await productions.fetch()).toJSON());
   }
 
   async messages({ params, response, auth }) {
@@ -204,6 +209,7 @@ class UsersController {
 
     return response.json(conversations);
   }
+
 }
 
 module.exports = UsersController;

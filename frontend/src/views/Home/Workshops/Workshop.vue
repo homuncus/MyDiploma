@@ -12,7 +12,8 @@
     </div>
     <el-form-item>
       <el-button v-if="workshop.is_user_member"
-        :disabled="workshop.users.filter(({ pivot }: any) => pivot.is_manager).length === 1 && workshop.is_user_manager" 
+        :disabled="leaveButtonBlocked()"
+        :title="leaveButtonBlocked() ? 'You are the only manager' : ''"
         type="danger"
         v-loading="participationLoading" 
         @click="leaveWorkshop">
@@ -126,6 +127,10 @@ const leaveWorkshop = async () => {
   })
   getWorkshop()
   participationLoading.value = false
+}
+
+const leaveButtonBlocked = () => {
+  return workshop.value.users.filter(({ pivot }: any) => pivot.is_manager).length === 1 && workshop.value.is_user_manager
 }
 
 const switchTab = (name: string) => {

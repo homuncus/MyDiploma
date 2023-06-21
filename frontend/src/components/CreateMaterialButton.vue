@@ -21,7 +21,7 @@
     </el-form>
     <template #footer>
       <el-button type="danger" @click="dialogFormVisible = false">Cancel</el-button>
-      <el-button v-loading="loading" type="primary" @click="submit">
+      <el-button :loading="loading" type="primary" @click="submit">
         Confirm
       </el-button>
     </template>

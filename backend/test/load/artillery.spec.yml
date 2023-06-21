@@ -1,0 +1,21 @@
+config:
+  target: "http://localhost:8007/api"
+  phases:
+    - duration: 60
+      arrivalRate: 30
+  defaults:
+    headers:
+      Content-Type: "application/json"
+ 
+scenarios:
+  - name: "Get Workshops"
+    flow:
+      - get:
+          url: "/workshops"
+  - name: "Generate a bunch of jwts"
+    flow:
+      - post:
+          url: "/auth/login"
+          json:
+            email: "cot.cotenov@gmail.com"
+            password: "123123"

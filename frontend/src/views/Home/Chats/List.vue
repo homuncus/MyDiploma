@@ -23,6 +23,7 @@
         </div>
       </router-link>
     </li>
+    <div v-if="chats.length === 0" class="mt-6 text-lg text-center text-gray-500 dark:text-neutral-300">No chats. Start conversation with someone!</div>
   </ul>
 </template>
 

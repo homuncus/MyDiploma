@@ -79,8 +79,8 @@ class WorkshopsController {
       .groupBy('workshops.id', 'user_workshops.user_id')
       .orderByRaw('is_user_member DESC, name DESC')
       .distinctOn('workshops.name', 'is_user_member')
-      .offset(offset)
-      .limit(limit);
+      .offset(offset || 0)
+      .limit(limit || 10);
     if (search) {
       result = result.andWhereRaw('LOWER(workshops.name) LIKE ?', `%${search.toLowerCase()}%`);
     }
@@ -160,7 +160,8 @@ class WorkshopsController {
         builder.with('netting.type')
           .with('chief')
           .with('material')
-          .with('workshop');
+          .with('workshop')
+          .with('users');
       })
       .select(Database.raw(
         `(SELECT COUNT(*) 
