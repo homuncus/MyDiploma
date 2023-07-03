@@ -88,6 +88,7 @@ Route.group(() => {
   Route.get('/productions/:finished?', '@provider:Users/Controllers/UsersController.productions');
 
   Route.post('/workshops/:id', '@provider:Workshops/Controllers/UserWorkshopsController.saveWorkshopMember');
+  Route.patch('/workshops/:id', '@provider:Workshops/Controllers/UserWorkshopsController.save');
   Route.delete('/workshops/:id', '@provider:Workshops/Controllers/UserWorkshopsController.deleteWorkshopMember');
 
   Route.get('/', '@provider:Users/Controllers/UsersController.scrollList');

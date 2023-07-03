@@ -84,7 +84,7 @@ class WorkshopsController {
     if (search) {
       result = result.andWhereRaw('LOWER(workshops.name) LIKE ?', `%${search.toLowerCase()}%`);
     }
-
+    console.log({offset, limit, search}, await result);
     return response.json(await result);
   }
 

@@ -34,7 +34,7 @@
           </div>
           <div class="text-center">
             <p class="font-bold">Workshop</p>
-            <h6 class="text-3xl font-bold text-deep-purple-accent-400">
+            <h6 class="text-3xl font-bold underline text-deep-purple-accent-400">
               <router-link :to="{ name: 'workshops', params: { slug: task?.workshop.slug } }">
                 {{ task?.workshop.name }}
               </router-link>

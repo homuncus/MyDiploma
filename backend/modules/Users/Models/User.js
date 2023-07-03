@@ -39,6 +39,12 @@ class User extends Model {
       .withPivot('accepted');
   }
 
+  friendRequests() {
+    return this.belongsToMany('Users/Models/User', 'friend_id')
+      .pivotModel('Users/Models/UserConnection')
+      // .wherePivot('accepted', false);
+  }
+
   productions() {
     return {
       whereChief: () => this.hasMany('Productions/Models/Production'),

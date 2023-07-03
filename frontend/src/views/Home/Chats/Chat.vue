@@ -3,7 +3,7 @@
   <div v-else class="w-full" style="height: calc(100% - 7rem)">
     <div class="relative flex items-center p-3" style="border-bottom: 1px solid var(--el-menu-border-color);">
       <img class="object-cover w-10 h-10 rounded-full"
-        src="https://cdn.pixabay.com/photo/2018/01/15/07/51/woman-3083383__340.jpg" alt="username" />
+        src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541" alt="username" />
       <router-link class="block ml-2 font-bold text-gray-600 dark:text-gray-200" :to="{ name: 'user', params: { username: route.params.slug } }">{{ route.params.slug }}</router-link>
       <span class="absolute w-3 h-3 bg-green-600 rounded-full left-10 top-3">
       </span>
@@ -15,7 +15,6 @@
           <div
             :class="['relative', 'max-w-xl', 'px-4', 'py-2', 'text-gray-700', 'dark:text-zinc-200', 'rounded', 'shadow', { 'bg-blue-300 dark:bg-sky-900': isSenderOf(message) }, { 'bg-gray-100 dark:bg-gray-800': !isSenderOf(message) }]">
             <span class="block">{{ message.message }}</span>
-            
           </div>
         </li>
       </ul>

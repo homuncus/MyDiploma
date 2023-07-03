@@ -50,7 +50,8 @@ declare module 'nets-types' {
     email: string,
     username: string,
     about: string,
-    pivot?: any
+    pivot?: any,
+    friendRequests: any[]
   }
 
   export interface Message {

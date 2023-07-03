@@ -45,8 +45,8 @@ class UserConnectionsController {
   async list({ request, response }) {
     const query = Database
       .select('user_connections.id',
-        'u1.username',
-        'u2.username',
+        'u1.username as user_id',
+        'u2.username as friend_id',
         'user_connections.accepted',
         'user_connections.created_at',
         'user_connections.updated_at')

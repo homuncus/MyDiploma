@@ -8,7 +8,7 @@ class UserProductionsController {
 
     const connection = await UserProduction.create({
       user_id: authUser.id,
-      workshop_id: id
+      production_id: id
     });
 
     if (!connection) {

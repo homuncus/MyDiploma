@@ -50,7 +50,7 @@
               <div class="flex gap-1 text-sm text-gray-500 truncate dark:text-gray-400">
                 Participants:
                 <router-link v-for="(user, index) in production.users" :key="user.id"
-                  :to="{ name: 'users', params: { username: user.username } }" class="flex">
+                  :to="{ name: 'user', params: { username: user.username } }" class="flex">
                   <div v-if="index > 0">,</div>
                   {{ user.username }}
                 </router-link>
@@ -133,7 +133,7 @@ const joinButtonBlocked = (prod: Production): boolean => {
 const joinNetting = async ({ id }: Production) => {
   joining.value = true
   await processAxios(async (axios) => {
-    await axios.post(`/users/productions/${id}`)
+    await axios.post(`/productions/${id}/users`)
   }, {
     successCb: (msg) => {
       msg.success({ message: 'And now, go knit a net!' })

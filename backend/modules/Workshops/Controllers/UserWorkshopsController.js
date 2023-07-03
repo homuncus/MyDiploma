@@ -78,8 +78,8 @@ class UserWorkshopsController {
     });
   }
 
-  async save({ request, response }) {
-    const input = request.all();
+  async save({ params, request, response }) {
+    const input = { ...request.all(), ...params };
 
     let userWorkshop = {};
 
@@ -127,6 +127,22 @@ class UserWorkshopsController {
     if (!membership) {
       return response.status(500).json(Notify.error('Not saved', {}));
     }
+
+    return response.json(Notify.success('Saved', {}));
+  }
+
+  async makeManager({ auth, params, response }) {
+    const { id } = params;
+    const authUser = await auth.authenticator('jwt').getUser();
+
+    const membership = await UserWorkshop.find(id);
+
+    if (!membership) {
+      return response.notFound(Notify.error('Not found', {}));
+    }
+
+    membership.merge({ is_manager: true });
+    await membership.save();
 
     return response.json(Notify.success('Saved', {}));
   }

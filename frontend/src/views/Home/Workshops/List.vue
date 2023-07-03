@@ -20,8 +20,9 @@
                 {{ workshop.name }}
               </span>
             </div>
-            <span class="block ml-2 text-sm text-gray-500 dark:text-gray-400 truncate">Members: {{
-              workshop.users_count }}</span>
+            <span class="block ml-2 text-sm text-gray-500 dark:text-gray-400 truncate">Members: 
+              {{ workshop.users_count }}
+            </span>
           </div>
         </router-link>
       </li>
@@ -50,9 +51,7 @@ const load = async () => {
   await processAxios(async (axios) => {
     const limit = 3
     const fetched = [].concat((await axios.get(
-      `/workshops?limit=${limit}&
-      offset=${workshops.value.length || 0}
-      ${search.value ? `&search=${search.value}` : ''}`)).data);
+      `/workshops?limit=${limit}&offset=${workshops.value.length || 0}&search=${search.value}`)).data);
     workshops.value = workshops.value.concat(fetched)
 
     if (fetched.length < limit) {

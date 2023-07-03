@@ -18,7 +18,8 @@
         </router-link>
       </el-form-item>
       <el-form-item>
-        <el-button type="success"> <el-icon class="mr-3" size="20">
+        <el-button type="success">
+          <el-icon class="mr-3" size="20">
             <UserIcon />
           </el-icon> Send friend request</el-button>
       </el-form-item>

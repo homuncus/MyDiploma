@@ -52,7 +52,7 @@
           <workshop-materials :materials="workshop.materials" :on-material-change="getWorkshop" />
         </el-tab-pane>
         <el-tab-pane lazy label="Users" name="users">
-          <workshop-users :users="workshop.users" />
+          <workshop-users :users="workshop.users" :manager="workshop.is_user_manager" :on-submit="getWorkshop" />
         </el-tab-pane>
       </el-tabs>
     </div>

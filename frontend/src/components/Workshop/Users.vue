@@ -28,7 +28,13 @@
               </p>
             </div>
             <div class="flex flex-col items-center text-base font-semibold text-gray-900 dark:text-white">
-              <div></div>
+              <div>
+                <el-button type="primary" plain :dark="isDark"
+                  v-if="!user.pivot.is_manager && props.manager"
+                  @click="makeManager(user)">
+                  Make a manager
+                </el-button>
+              </div>
               <div></div>
             </div>
           </div>
@@ -42,13 +48,38 @@
 <script lang="ts" setup>
 import { type User } from 'nets-types'
 import { useUserStore } from '@/stores';
+import { isDark } from '@/composables';
+import { ref } from 'vue';
+import { processAxios } from '@/services';
 
 const userStore = useUserStore()
+const loading = ref(false)
 
-const props = defineProps({
-  users: {
-    type: Array<User>,
-    required: true
-  }
+const props = withDefaults(defineProps<{
+  users: User[],
+  manager?: boolean,
+  onSubmit?: Function
+}>(), {
+  manager: false
 })
+
+const makeManager = async (user: User) => {
+  loading.value = true
+  console.log(user.pivot);
+  
+  await processAxios(async (axios) => {
+    await axios.patch(`/users/workshops/${user.pivot.id}`, {
+      is_manager: true
+    })
+  }, {
+    successCb: (msg) => {
+      msg.success({ message: `Promoted ${user.username} to a manager!` })
+    },
+    userErrorCb: (msg) => {
+      msg.error({ message: 'Something went wrong' })
+    }
+  })
+  if (props.onSubmit) props.onSubmit()
+  loading.value = false
+}
 </script>

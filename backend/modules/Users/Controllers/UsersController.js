@@ -1,6 +1,7 @@
 const View = use('View');
 const Route = use('Route');
 const Database = use('Database');
+const moment = require('moment');
 
 const Notify = use('ADM/Notify');
 const Datatables = use('ADM/Datatables');
@@ -61,7 +62,7 @@ class UsersController {
       .from('users')
       .limit(limit);
 
-    if (search) usersQuery = usersQuery.whereRaw('username LIKE ?', `%${search.toLowerCase()}%`);
+    if (search) usersQuery = usersQuery.whereRaw('LOWER(username) LIKE ?', `%${search.toLowerCase()}%`);
 
     return response.json(await usersQuery);
   }
@@ -103,12 +104,16 @@ class UsersController {
     }
 
     if (input.blocked && !user.deleted_at) {
-      user.deleted_at = Date.now();
+      user.deleted_at = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
     } else if (!input.blocked && user.deleted_at) {
       user.deleted_at = null;
     }
 
-    user.merge(input);
+    user.merge({
+      ...input,
+      blocked: !!input.blocked,
+      password: input.password === confirmPassword ? input.password : user.password
+    });
 
     if (!await user.save()) {
       return response.json(Notify.error('Not updated', {}));
@@ -119,7 +124,11 @@ class UsersController {
 
   async show({ request, response, params }) {
     const { id } = params;
-    const user = await User.find(id);
+    const user = await User.query()
+      .with('friends')
+      .with('friendRequests')
+      .where('id', id)
+      .fetch();
 
     if (!user) {
       return response.notFound(Notify.error('User not found', {}));
