@@ -16,4 +16,4 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
-Route.on('/').render('welcome').as('web.welcome');
+Route.any('*', ({ view }) => view.render('index'));

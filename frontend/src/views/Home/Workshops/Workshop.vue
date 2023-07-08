@@ -5,7 +5,7 @@
     <div class="mb-6">
       <p class="text-5xl font-bold text-blue-800 dark:text-white">{{ workshop.name }}</p>
       <p class="text-slate-800 dark:text-slate-400">
-        <a :href="`http://maps.google.com/?q=${workshop.address}`"><el-icon class="mr-1">
+        <a :href="`http://maps.google.com/?q=${workshop.address}`" target="_blank"><el-icon class="mr-1">
             <MapLocation />
           </el-icon>{{ workshop.address }}</a>
       </p>

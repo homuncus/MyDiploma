@@ -1,0 +1,1 @@
+body{color:var(--el-menu-text-color)}.infinite-list-item{display:flex;background:var(--el-color-primary-light-9);color:var(--el-color-primary);border-radius:.25rem}.list-item{display:flex;border-bottom:1px solid var(--el-menu-border-color)}.list-item:last-child{border-bottom:none}
